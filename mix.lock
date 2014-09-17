@@ -1,0 +1,11 @@
+%{"cowboy": {:package, "1.0.0"},
+  "cowlib": {:package, "1.0.0"},
+  "erlydtl": {:git, "git://github.com/erlydtl/erlydtl.git", "6280d21a6d9bd5a8f6caf2530773b0e61471b4d0", [branch: "stable"]},
+  "eunit_formatters": {:git, "git://github.com/seancribbs/eunit_formatters", "7f79fa3fb953b94990bd9b41e92cef7cfecf91ef", [ref: "7f79fa3fb953b94990bd9b41e92cef7cfecf91ef"]},
+  "linguist": {:package, "0.1.2"},
+  "merl": {:git, "git://github.com/erlydtl/merl.git", "28e5b3829168199e8475fa91b997e0c03b90d280", [ref: "28e5b3829168199e8475fa91b997e0c03b90d280"]},
+  "phoenix": {:package, "0.4.1"},
+  "phoenix_dtl": {:package, "0.0.1"},
+  "plug": {:package, "0.7.0"},
+  "poison": {:package, "1.1.1"},
+  "ranch": {:package, "1.0.0"}}
