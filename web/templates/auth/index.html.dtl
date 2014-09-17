@@ -1,0 +1,7 @@
+{% extends "../layout/admin.html.dtl" %}
+{% block content %}
+<div class="jumbotron">
+  <h2>AUTH LOGIN</h2>
+  <p class="lead">{{ message }}</p>
+</div>
+{% endblock %}
