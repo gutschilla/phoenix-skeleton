@@ -5,8 +5,6 @@ defmodule Hello2.AuthController do
 
     def index(conn, _params) do
         current_user = get_session( conn, :username )
-        Logger.log(:debug, "current_user: " <> current_user )
-
         conn
         |> assign_layout(:none)
         |> render "index",
@@ -35,7 +33,7 @@ defmodule Hello2.AuthController do
             _   -> :ok
         end
         if :ok == logout_result do
-            conn = put_session( conn, :username, nil )
+            conn = delete_session( conn, :username )
         end
         json conn, JSON.encode!( %{ success: logout_result == :ok, reason: logout_result } )
     end
