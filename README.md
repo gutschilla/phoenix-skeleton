@@ -1,10 +1,13 @@
 # Phoenix-Sekeleton
 
-* Basic routing
-* Authentication
-* Django Templates (erlyDTL)
-* Ecto models
-* BossDB models
+## Feature Roadmap
+- Robust Routing DSL
+  - [x] Basic routing
+  - [x] Authentication
+  - [ ] Memcahed (or other external) Session store
+  - [x] Django Templates (erlyDTL)
+  - [ ] Ecto models
+  - [ ] BossDB models
 
 To start your new Phoenix application you have to:
 
