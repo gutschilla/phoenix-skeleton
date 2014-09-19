@@ -3,7 +3,9 @@
     <div class="container">
         <h2>Authentication</h2>
 
-        <form role="form">
+        <form role="form"
+            action="{{ login_action }}"
+        >
           <div class="form-group">
             <label for="InputUsername">Username</label>
             <input type="text" class="form-control" id="InputUsername" placeholder="your username"/>

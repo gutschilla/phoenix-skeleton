@@ -8,8 +8,8 @@ defmodule Hello2.Router do
     end
 
     scope path: "/auth" do
-        get "/",      Hello2.AuthController, :index
-        #get "/login", Hello2.AuthController, :login
+        get  "/",      Hello2.AuthController, :index ,    as: :auth_index
+        post "/login", Hello2.AuthController, :do_login,  as: :do_login
     end
 
 
