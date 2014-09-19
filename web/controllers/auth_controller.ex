@@ -10,6 +10,7 @@ defmodule Hello2.AuthController do
         |> render "index",
         %{
             login_action:     "/auth/login", #Hello2.Router.do_login_path,
+            logout_action:    "/auth/logout",
             current_user:     current_user,
             is_authenticated: current_user != nil
         }
