@@ -1,4 +1,10 @@
-# Hello2
+# Phoenix-Sekeleton
+
+* Basic routing
+* Authentication
+* Django Templates (erlyDTL)
+* Ecto models
+* BossDB models
 
 To start your new Phoenix application you have to:
 
