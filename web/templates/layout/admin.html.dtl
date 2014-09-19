@@ -8,9 +8,9 @@
         <meta name="description" content="Administrationsinterface" />
         {% block head %}
             <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
-            <script src="bower_components/jquery/dist/jquery.min.js"          type="text/javascript"></script> 
-            <script src="bower_components/underscore/underscore-min.js"       type="text/javascript"></script> 
-            <script src="bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script> 
+            <script src="bower_components/jquery/dist/jquery.min.js"          type="text/javascript"></script>
+            <script src="bower_components/underscore/underscore-min.js"       type="text/javascript"></script>
+            <script src="bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
         {% endblock %}
         <style type="text/css">
             nav li.before-dropdown > a { padding-right: 0; }
@@ -32,7 +32,7 @@
                             {% endblock %}
                         </a>
                     </div>
-    
+
                     <!--
                     :   my $current_node = $c.navigation.current_node;
                     :   macro navigation -> $tree, $level {
@@ -59,7 +59,7 @@
                     :   }
                     :   navigation( $c.navigation.node_of('/admin', 'navi'), 0 );
                     -->
-    
+
                     <ul class="nav navbar-nav navbar-right <: 'hidden' if not $c.user :>">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Konto<b class="caret"></b></a>
