@@ -12,7 +12,7 @@
         </div>
     {% else %}
         <div class="container">
-            <h2>Authentication {{ current_user }}</h2>
+            <h2>Login</h2>
             <form role="form"
                 action="{{ login_action }}"
                 method="post"
