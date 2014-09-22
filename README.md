@@ -16,9 +16,9 @@
 - [ ] pluggable Navigation tree
 - [ ] CouchDB connector
 - [ ] Hello2.Admin.RESTCrud controller
-    [ ] validate/save
-    [ ] uploads
-    [ ] Image resizing
+    - [ ] validate/save
+    - [ ] uploads
+    - [ ] Image resizing
 - [ ] TinySite CMS
 
 To start your new Phoenix application you have to:
