@@ -24,11 +24,13 @@ defmodule Hello2.Mixfile do
   # { :barbat, "~> 0.1", github: "elixir-lang/barbat" }
   defp deps do
     [
-      {:phoenix, "0.4.1"},
-      {:cowboy, "~> 1.0.0"},
-      {:erlydtl, github: "erlydtl/erlydtl", branch: "stable"},
-      {:phoenix_dtl, "~> 0.0.1"},
-      {:mcd, github: "EchoTeam/mcd"}
+        {:phoenix, "0.4.1"},
+        {:cowboy, "~> 1.0.0"},
+        {:erlydtl, github: "erlydtl/erlydtl", branch: "stable"},
+        {:phoenix_dtl, "~> 0.0.1"},
+        {:mcd, github: "EchoTeam/mcd"},
+        {:postgrex, ">= 0.0.0"},
+        {:ecto,     ">= 0.0.0"}
     ]
   end
 end
