@@ -1,5 +1,6 @@
 defmodule Hello2.Router do
-    use Phoenix.Router
+    # using ets sessions
+    use Hello2.Phoenix.Router
 
     get "/", Hello2.PageController, :index, as: :pages
 
