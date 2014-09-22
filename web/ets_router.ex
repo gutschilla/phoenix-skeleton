@@ -40,15 +40,10 @@ defmodule Phoenix.Router.ETS do
       if Config.get([:code_reloader, :enabled]) do
         plug Plugs.CodeReloader
       end
-      if Config.router(__MODULE__, [:cookies]) do
-        key    = Config.router!(__MODULE__, [:session_key])
-        secret = Config.router!(__MODULE__, [:session_secret])
 
-        #plug Plug.Session, store: :cookie, key: key, secret: secret
-        plug Plug.Session, store: :ets, key: "sid", table: :session
-        plug Plugs.SessionFetcher
-        IO.puts("Yehaw, usig Hello2.Phoenix.Router")
-      end
+      plug Plug.Session, store: :ets, key: "sid", table: :session
+      plug Plugs.SessionFetcher
+      IO.puts("Yehaw, usig Phoenix.Router.ETS")
 
       plug Plug.MethodOverride
 
