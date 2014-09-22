@@ -19,6 +19,7 @@
     - [ ] uploads
     - [ ] Image resizing
 - [ ] TinySite CMS
+- [ ] Create mix task to boostrap components inszead of copy/paste+search/replace
 
 To start your new Phoenix application you have to:
 
