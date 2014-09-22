@@ -73,7 +73,7 @@ defmodule Hello2.AuthController do
         case Repo.all( query ) do
             []           -> :unknown
             [ user ]     -> check_password( :db_plain, user, password )
-            [ user | _ ] -> :not_unique
+            [ _user | _ ] -> :not_unique
         end
     end
 
