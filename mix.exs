@@ -27,7 +27,8 @@ defmodule Hello2.Mixfile do
       {:phoenix, "0.4.1"},
       {:cowboy, "~> 1.0.0"},
       {:erlydtl, github: "erlydtl/erlydtl", branch: "stable"},
-      {:phoenix_dtl, "~> 0.0.1"}
+      {:phoenix_dtl, "~> 0.0.1"},
+      {:mcd, github: "EchoTeam/mcd"}
     ]
   end
 end
