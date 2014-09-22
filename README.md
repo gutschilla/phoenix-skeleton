@@ -4,10 +4,15 @@
 - Robust Routing DSL
   - [x] Basic routing
   - [x] Authentication
+    - [x] Hard-Wired
+    - [x] Database (Ecto/Postgres)
+    - [ ] Salted, hashed passwords
   - [ ] Authorization
+    - [ ] Userroles Ecto defintion
+    - [ ] Hello2.Authorization.check_user_roles([roles]) )
   - [x] Memcahed Session store
   - [x] Django Templates (erlyDTL)
-  - [ ] Ecto models
+  - [x] Ecto models
   - [ ] BossDB models
 
 To start your new Phoenix application you have to:

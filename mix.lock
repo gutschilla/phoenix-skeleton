@@ -1,7 +1,9 @@
 %{"corman": {:git, "git://github.com/EchoTeam/corman.git", "e3c4c9f602441b4d9b8f9f8ea2813b3d791ec9e1", [branch: "master"]},
   "cowboy": {:package, "1.0.0"},
   "cowlib": {:package, "1.0.0"},
+  "decimal": {:package, "0.2.5"},
   "dht_ring": {:git, "git://github.com/EchoTeam/dht_ring.git", "7a8c4fe3238058aa7c296dc1f1c83344025bd6e1", [branch: "master"]},
+  "ecto": {:package, "0.2.5"},
   "erlydtl": {:git, "git://github.com/erlydtl/erlydtl.git", "6280d21a6d9bd5a8f6caf2530773b0e61471b4d0", [branch: "stable"]},
   "eunit_formatters": {:git, "git://github.com/seancribbs/eunit_formatters", "7f79fa3fb953b94990bd9b41e92cef7cfecf91ef", [ref: "7f79fa3fb953b94990bd9b41e92cef7cfecf91ef"]},
   "goldrush": {:git, "git://github.com/DeadZen/goldrush.git", "1d883423ac360b3536ca52dc733a0164bacf3109", [tag: "0.1.5"]},
@@ -13,4 +15,6 @@
   "phoenix_dtl": {:package, "0.0.1"},
   "plug": {:package, "0.7.0"},
   "poison": {:package, "1.1.1"},
+  "poolboy": {:package, "1.2.1"},
+  "postgrex": {:package, "0.6.0"},
   "ranch": {:package, "1.0.0"}}
