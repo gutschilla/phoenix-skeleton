@@ -4,7 +4,8 @@
 - Robust Routing DSL
   - [x] Basic routing
   - [x] Authentication
-  - [ ] Memcahed (or other external) Session store
+  - [ ] Authorization
+  - [x] Memcahed Session store
   - [x] Django Templates (erlyDTL)
   - [ ] Ecto models
   - [ ] BossDB models
