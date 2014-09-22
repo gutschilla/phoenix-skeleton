@@ -41,7 +41,8 @@ defmodule Phoenix.Router.ETS do
         plug Plugs.CodeReloader
       end
 
-      plug Plug.Session, store: :ets, key: "sid", table: :session
+      key = Config.router!(__MODULE__, [:session_key])
+      plug Plug.Session, store: :ets, key: key, table: :session
       plug Plugs.SessionFetcher
       IO.puts("Yehaw, usig Phoenix.Router.ETS")
 
