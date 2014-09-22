@@ -1,4 +1,4 @@
-defmodule Hello2.Phoenix.Router do
+defmodule Phoenix.Router.ETS do
   import Plug.Conn, only: [assign_private: 3]
   import Phoenix.Controller.Connection, only: [assign_status: 2, assign_error: 3]
   alias Phoenix.Plugs
