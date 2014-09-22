@@ -1,19 +1,25 @@
 # Phoenix-Sekeleton
 
 ## Feature Roadmap
-- Robust Routing DSL
-  - [x] Basic routing
-  - [x] Authentication
-    - [x] Hard-Wired
-    - [x] Database (Ecto/Postgres)
-    - [ ] Salted, hashed passwords
-  - [ ] Authorization
-    - [ ] Userroles Ecto defintion
-    - [ ] Hello2.Authorization.check_user_roles([roles]) )
-  - [x] Memcahed Session store
-  - [x] Django Templates (erlyDTL)
-  - [x] Ecto models
-  - [ ] BossDB models
+- [x] Basic routing
+- [x] Authentication
+- [x] Hard-Wired
+- [x] Database (Ecto/Postgres)
+- [ ] Salted, hashed passwords
+- [ ] Authorization
+- [ ] Userroles Ecto defintion
+- [ ] Hello2.Authorization.check_user_roles([roles]) )
+- [x] Memcahed Session store
+- [x] Django Templates (erlyDTL)
+- [x] Ecto models
+- [ ] BossDB models
+- [ ] pluggable Navigation tree
+- [ ] CouchDB connector
+- [ ] Hello2.Admin.RESTCrud controller
+    [ ] validate/save
+    [ ] uploads
+    [ ] Image resizing
+- [ ] TinySite CMS
 
 To start your new Phoenix application you have to:
 
