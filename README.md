@@ -12,7 +12,6 @@
 - [x] Memcahed Session store
 - [x] Django Templates (erlyDTL)
 - [x] Ecto models
-- [ ] BossDB models
 - [ ] pluggable Navigation tree
 - [ ] CouchDB connector
 - [ ] Hello2.Admin.RESTCrud controller
