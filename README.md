@@ -3,12 +3,12 @@
 ## Feature Roadmap
 - [x] Basic routing
 - [x] Authentication
-- [x] Hard-Wired
-- [x] Database (Ecto/Postgres)
-- [ ] Salted, hashed passwords
+    - [x] hard-wired
+    - [x] from Database (Ecto/Postgres)
+    - [ ] Salted, hashed passwords
 - [ ] Authorization
-- [ ] Userroles Ecto defintion
-- [ ] Hello2.Authorization.check_user_roles([roles]) )
+    - [ ] Userroles Ecto defintion
+    - [ ] Hello2.Authorization.check_user_roles([roles]) )
 - [x] Memcahed Session store
 - [x] Django Templates (erlyDTL)
 - [x] Ecto models
