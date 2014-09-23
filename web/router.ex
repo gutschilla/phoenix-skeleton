@@ -10,8 +10,6 @@ defmodule Hello2.Router do
     plug Plug.Session,  store: :memcached, key: key, table: :memcached_sessions
     plug Plugs.SessionFetcher
     
-    IO.puts Config.router!(:"Elixir.Hello2.Router", [:session_key])
-
     scope path: "/foo/bar" do
         get "/:some_key", Hello2.PageController, :foo_bar
     end
