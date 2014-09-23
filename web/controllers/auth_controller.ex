@@ -18,7 +18,7 @@ defmodule Hello2.AuthController do
 
     def do_login( conn, %{ "password" => password, "username" => username } ) do
         credentials = credentials( username: username, password: password )
-        login_result = authenticate( credentials )
+        login_result = authenticate( :db_plain, credentials )
         conn = put_session( conn, :username, username )
         json conn, JSON.encode!( %{ success: login_result == :ok, reason: login_result } )
     end
@@ -51,12 +51,29 @@ defmodule Hello2.AuthController do
         %{ "testuser": "testpass" }
     end
 
-    def authenticate( {:credentials, str_username, password} ) do
+    def check_password( :db_plain, user, password ) do
+        case user.password_hash == password do
+            true  -> :ok
+            false -> :wrong_password
+        end
+    end
+
+    def authenticate( :plain, {:credentials, str_username, password} ) do
         username = String.to_atom( str_username )
         users = get_users()
         case Map.has_key?( users, username) do
-            true  -> if users[ username ] == to_string( password ) do :ok else :wrong end
+            true  -> if users[ username ] == to_string( password ) do :ok else :wrong_password end
             false -> :unknown
+        end
+    end
+
+    def authenticate( :db_plain, {:credentials, str_username, password} ) do
+        import Ecto.Query
+        query = from u in Hello2.User, where: u.username == ^str_username
+        case Repo.all( query ) do
+            []           -> :unknown
+            [ user ]     -> check_password( :db_plain, user, password )
+            [ _user | _ ] -> :not_unique
         end
     end
 
