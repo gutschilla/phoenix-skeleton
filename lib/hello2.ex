@@ -5,13 +5,6 @@ defmodule Hello2 do
     # for more information on OTP Applications
     def start(_type, _args) do
         import Supervisor.Spec, warn: false
-
-        :ets.new(:session, [:named_table, :public, read_concurrency: true])
-
-        #:ets.new(:subapps, [:named_table, :public, read_concurrency: true])
-        #{:ok, memcached_PID } = :mcd.start_link()
-        #:ets.insert(:subapps, {:memcached, memcached_PID})
-
         :mcd.start_link(:memcached_sessions, [] )
 
         children = [
