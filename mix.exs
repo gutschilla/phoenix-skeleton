@@ -12,8 +12,13 @@ defmodule Hello2.Mixfile do
   # Configuration for the OTP application
   def application do
     [
-      mod: { Hello2, [] },
-      applications: [:phoenix, :cowboy, :logger, :porcelain]
+        mod: { Hello2, [] },
+        applications: [
+            :phoenix,
+            :cowboy,
+            :logger,
+            :porcelain
+        ]
     ]
   end
 
