@@ -15,4 +15,5 @@ config :phoenix, :code_reloader,
 config :logger, :console,
   level: :debug
 
-
+config :Repo, :startup,
+    postgres_url: "ecto://hello2_user:hello2_pass@192.168.0.240/hello2"

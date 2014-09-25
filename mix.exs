@@ -12,8 +12,13 @@ defmodule Hello2.Mixfile do
   # Configuration for the OTP application
   def application do
     [
-      mod: { Hello2, [] },
-      applications: [:phoenix, :cowboy, :logger]
+        mod: { Hello2, [] },
+        applications: [
+            :phoenix,
+            :cowboy,
+            :logger,
+            :porcelain
+        ]
     ]
   end
 
@@ -24,13 +29,22 @@ defmodule Hello2.Mixfile do
   # { :barbat, "~> 0.1", github: "elixir-lang/barbat" }
   defp deps do
     [
+        # web framework
         {:phoenix, "0.4.1"},
+        # http server
         {:cowboy, "~> 1.0.0"},
+        # django templates
         {:erlydtl, github: "erlydtl/erlydtl", branch: "stable"},
+        # adapter erlydtl => phoenix
         {:phoenix_dtl, "~> 0.0.1"},
+        # memcached driver
         {:mcd, github: "EchoTeam/mcd"},
+        # postgres driver
         {:postgrex, ">= 0.0.0"},
-        {:ecto,     ">= 0.0.0"}
+        # ORM-like
+        {:ecto,     ">= 0.0.0"},
+        # communication with external programs
+        {:porcelain, "~> 2.0"}
     ]
   end
 end
