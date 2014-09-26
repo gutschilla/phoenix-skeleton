@@ -11,8 +11,10 @@
     - [ ] Hello2.Authorization.check_user_roles([roles]) )
 - [x] Memcahed Session store
 - [x] Django Templates (erlyDTL)
+    - [ ] decide if might be easier to just use eex templates (but I love template inheritance!)
 - [x] Ecto models
-- [ ] call/process external programs via procelain (mainly for PDF generation)
+- [x] call/process external programs via porcelain (mainly for PDF generation)
+    - [ ] stream input/output instead of writing to and reading from temp files
 - [ ] pluggable Navigation tree
 - [ ] CouchDB connector
 - [ ] Hello2.Admin.RESTCrud controller
