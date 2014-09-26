@@ -10,14 +10,15 @@ use Mix.Config
 # for the key and cert
 
 config :phoenix, Hello2.Router,
-  port: System.get_env("PORT"),
-  ssl: false,
-  host: "example.com",
-  cookies: false,
-  session_key: "_hello2_key",
-  session_secret: "BDG8GOGD6ET_BE_#PQ!HD1DC*!JI^)F1LX^1%L#G3FQ#0!PU(&FJZP3F_FD1*O148V5337X3XVB0EB2"
+    port: System.get_env("PORT"),
+    ssl: false,
+    host: "example.com",
+    cookies: false,
+    session_key: "_hello2_key",
+    session_secret: "BDG8GOGD6ET_BE_#PQ!HD1DC*!JI^)F1LX^1%L#G3FQ#0!PU(&FJZP3F_FD1*O148V5337X3XVB0EB2"
+    static_assets: true,
+    static_assets_mount: "/static"
 
 config :logger, :console,
   level: :info,
   metadata: [:request_id]
-

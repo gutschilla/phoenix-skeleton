@@ -7,10 +7,10 @@
         <title>Administrationsinterface</title>
         <meta name="description" content="Administrationsinterface" />
         {% block head %}
-            <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
-            <script src="bower_components/jquery/dist/jquery.min.js"          type="text/javascript"></script>
-            <script src="bower_components/underscore/underscore-min.js"       type="text/javascript"></script>
-            <script src="bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+            <link rel="stylesheet" href="/static/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+            <script src="/static/bower_components/jquery/dist/jquery.min.js"          type="text/javascript"></script>
+            <script src="/static/bower_components/underscore/underscore-min.js"       type="text/javascript"></script>
+            <script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
         {% endblock %}
         <style type="text/css">
             nav li.before-dropdown > a { padding-right: 0; }

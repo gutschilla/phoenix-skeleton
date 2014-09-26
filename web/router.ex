@@ -10,6 +10,7 @@ defmodule Hello2.Router do
 
     get "/",     Hello2.PageController, :index, as: :pages
     get "/date", Hello2.PageController, :date
+    get "/pdf",  Hello2.PageController, :pdf
 
     scope path: "/foo/bar" do
         get "/:some_key", Hello2.PageController, :foo_bar

@@ -1,7 +1,13 @@
 defmodule Hello2Test do
-  use ExUnit.Case
+    use ExUnit.Case
+    
+    test "the truth" do
+      assert(true)
+    end
+    
+    test "render snippet" do
+        use Phoenix Controller
+        
+    end
 
-  test "the truth" do
-    assert(true)
-  end
 end

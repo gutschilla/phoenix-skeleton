@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Hello2 - made with Phoenix!</title>
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="{{ helpers.path.static }}bower_components/bootstrap/dist/css/bootstrap.min.css" />
   </head>
 
   <body>

@@ -1,4 +1,4 @@
-{% extends "layout.html.dtl" %}
+{% extends "../layout/frontend.html.dtl" %}
 {% block content %}
 <div class="jumbotron">
   <h2>Foo Bar!</h2>
