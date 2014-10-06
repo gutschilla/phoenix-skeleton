@@ -3,10 +3,12 @@ defmodule Hello2.AuthController do
     require Record
     Record.defrecord :credentials, [ username: "", password: ""]
 
+    @layout_module Hello2.NoLayoutView
+
     def index(conn, _params) do
         current_user = get_session( conn, :username )
         conn
-        |> assign_layout(:none)
+        #|> assign_layout(:none)
         |> render "index",
         %{
             login_action:     "/auth/login", #Hello2.Router.do_login_path,
