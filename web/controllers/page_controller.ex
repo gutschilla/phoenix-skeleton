@@ -1,16 +1,16 @@
 defmodule Hello2.PageController do
     use Phoenix.Controller
 
+    @layout_module Hello2.NoLayoutView
+
     def index(conn, _params) do
         conn
-        |> assign_layout(:none)
         |> render "index", %{ message: "hello here", helpers: helpers() }
     end
 
     def foo_bar(conn, params ) do
         Logger.log( :debug, "some_key is: \"" <> params[ "some_key" ] <> "\"")
         conn
-        |> assign_layout(:none)
         |> render "foo_bar", %{ message: params[ "some_key" ] }
     end
 
