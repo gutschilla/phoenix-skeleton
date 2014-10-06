@@ -7,28 +7,47 @@ defmodule Hello2.AuthController do
 
     def index(conn, _params) do
         current_user = get_session( conn, :username )
+        # TODO: get this automagically
+        url_login  = Hello2.Router.Helpers.auth_path(:login)  |> Hello2.Router.Helpers.url
+        url_logout = Hello2.Router.Helpers.auth_path(:logout) |> Hello2.Router.Helpers.url
         conn
         |> render "index",
         %{
-            login_action:     "/auth/login", #Hello2.Router.do_login_path,
-            logout_action:    "/auth/logout",
+            url_login:        url_login,
+            url_logout:       url_logout,
             current_user:     current_user,
             is_authenticated: current_user != nil
         }
     end
 
-    def do_login( conn, %{ "password" => password, "username" => username } ) do
+    def parse(conn, opts \\ []) do
+        opts = Keyword.put_new(opts, :parsers, [Plug.Parsers.URLENCODED, Plug.Parsers.MULTIPART])
+        Plug.Parsers.call(conn, Plug.Parsers.init(opts))
+    end
+
+    def is_json( conn ) do
+        {"accept",       accept       } = List.keyfind( conn.req_headers, "accept", 0 )
+        {"content-type", content_type } = List.keyfind( conn.req_headers, "content-type", 0 )
+        String.contains?( accept, "application/json") || String.contains?( content_type, "application/json")
+    end
+
+    def login( conn, %{ "password" => password, "username" => username } ) do
         credentials = credentials( username: username, password: password )
         login_result = authenticate( :db_plain, credentials )
         conn = put_session( conn, :username, username )
-        json conn, JSON.encode!( %{ success: login_result == :ok, reason: login_result } )
+
+        case is_json( conn ) do
+            true  -> json conn, JSON.encode!( %{ success: login_result == :ok, reason: login_result } )
+            false -> redirect conn, Hello2.Router.Helpers.auth_path(:index)
+        end
+
     end
 
-    def do_login( conn, _ ) do
+    def login( conn, _ ) do
         json conn, JSON.encode!( %{ success: false, reason: "params must be username and password"  } )
     end
 
-    def do_logout( conn, _params ) do
+    def logout( conn, _params ) do
         current_user = get_session( conn, :username )
         logout_result = case current_user do
             nil -> :not_authenticated
@@ -37,7 +56,10 @@ defmodule Hello2.AuthController do
         if :ok == logout_result do
             conn = delete_session( conn, :username )
         end
-        json conn, JSON.encode!( %{ success: logout_result == :ok, reason: logout_result } )
+        case is_json( conn ) do
+            true  -> json conn, JSON.encode!( %{ success: logout_result == :ok, reason: logout_result } )
+            false -> redirect conn, Hello2.Router.Helpers.auth_path(:index)
+        end
     end
 
     def not_found(conn, _params) do

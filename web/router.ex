@@ -17,9 +17,9 @@ defmodule Hello2.Router do
     end
 
     scope path: "/auth" do
-        get  "/",       Hello2.AuthController, :index ,    as: :auth_index
-        post "/login",  Hello2.AuthController, :do_login,  as: :auth_login
-        post "/logout", Hello2.AuthController, :do_logout, as: :auth_logout
+        get  "/",       Hello2.AuthController, :index  , as: :auth
+        post "/login",  Hello2.AuthController, :login  , as: :auth
+        post "/logout", Hello2.AuthController, :logout , as: :auth
     end
 
 

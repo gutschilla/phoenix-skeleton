@@ -4,7 +4,7 @@
         <div class="container">
             <h2>Hello {{ current_user }}</h2>
             <form role="form"
-                action="{{ logout_action }}"
+                action="{{ url_logout }}"
                 method="post"
             >
                 <button type="submit" class="btn btn-default">Logout</button>
@@ -14,7 +14,7 @@
         <div class="container">
             <h2>Login</h2>
             <form role="form"
-                action="{{ login_action }}"
+                action="{{ url_login }}"
                 method="post"
             >
               <div class="form-group">
