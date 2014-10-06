@@ -34,7 +34,10 @@ defmodule Hello2.AuthController do
     def login( conn, %{ "password" => password, "username" => username } ) do
         credentials = credentials( username: username, password: password )
         login_result = authenticate( :db_plain, credentials )
-        conn = put_session( conn, :username, username )
+
+        if login_result == :ok do
+            conn = put_session( conn, :username, username )
+        end
 
         case is_json( conn ) do
             true  -> json conn, JSON.encode!( %{ success: login_result == :ok, reason: login_result } )
