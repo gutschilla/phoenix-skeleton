@@ -43,8 +43,10 @@ defmodule Hello2.Mixfile do
         {:postgrex, ">= 0.0.0"},
         # ORM-like
         {:ecto,     ">= 0.0.0"},
-        # communication with external programs
-        {:porcelain, "~> 2.0"}
+        # simple PDF generator
+        {:pdf_generator, github: "gutschilla/elixir-pdf-generator", branch: "master" },
+        ## dialyzer interface
+        #{:dialyze, ">= 0.1.0"}
     ]
   end
 end
