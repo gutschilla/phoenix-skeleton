@@ -1,16 +1,18 @@
-defmodule Hello2.AuthController do
+defmodule Skeleton2.AuthController do
     use Phoenix.Controller
     require Record
     Record.defrecord :credentials, [ username: "", password: ""]
+    alias Skeleton2.Router.Helpers
 
-    @layout_module Hello2.NoLayoutView
+    plug :action
 
     def index(conn, _params) do
         current_user = get_session( conn, :username )
         # TODO: get this automagically
-        url_login  = Hello2.Router.Helpers.auth_path(:login)  |> Hello2.Router.Helpers.url
-        url_logout = Hello2.Router.Helpers.auth_path(:logout) |> Hello2.Router.Helpers.url
+        url_login  = Helpers.auth_path(:login)  |> Helpers.url
+        url_logout = Helpers.auth_path(:logout) |> Helpers.url
         conn
+        |> put_layout( :none )
         |> render "index",
         %{
             url_login:        url_login,
@@ -18,11 +20,6 @@ defmodule Hello2.AuthController do
             current_user:     current_user,
             is_authenticated: current_user != nil
         }
-    end
-
-    def parse(conn, opts \\ []) do
-        opts = Keyword.put_new(opts, :parsers, [Plug.Parsers.URLENCODED, Plug.Parsers.MULTIPART])
-        Plug.Parsers.call(conn, Plug.Parsers.init(opts))
     end
 
     def is_json( conn ) do
@@ -41,7 +38,7 @@ defmodule Hello2.AuthController do
 
         case is_json( conn ) do
             true  -> json conn, JSON.encode!( %{ success: login_result == :ok, reason: login_result } )
-            false -> redirect conn, Hello2.Router.Helpers.auth_path(:index)
+            false -> redirect conn, Helpers.auth_path(:index)
         end
 
     end
@@ -61,7 +58,7 @@ defmodule Hello2.AuthController do
         end
         case is_json( conn ) do
             true  -> json conn, JSON.encode!( %{ success: logout_result == :ok, reason: logout_result } )
-            false -> redirect conn, Hello2.Router.Helpers.auth_path(:index)
+            false -> redirect conn, Helpers.auth_path(:index)
         end
     end
 
@@ -95,7 +92,7 @@ defmodule Hello2.AuthController do
 
     def authenticate( :db_plain, {:credentials, str_username, password} ) do
         import Ecto.Query
-        query = from u in Hello2.User, where: u.username == ^str_username
+        query = from u in Skeleton2.User, where: u.username == ^str_username
         case Repo.all( query ) do
             []           -> :unknown
             [ user ]     -> check_password( :db_plain, user, password )

@@ -1,4 +1,4 @@
-defmodule Hello2.Views do
+defmodule Skeleton2.Views do
 
   defmacro __using__(_options) do
     quote do
@@ -6,8 +6,9 @@ defmodule Hello2.Views do
       import unquote(__MODULE__)
 
       # This block is expanded within all views for aliases, imports, etc
-      import Hello2.I18n
-      import Hello2.Router.Helpers
+      import Skeleton2.I18n
+      import Skeleton2.Router.Helpers
+      alias Phoenix.Controller.Flash
     end
   end
 

@@ -1,4 +1,4 @@
-defmodule Hello2.User do
+defmodule Skeleton2.User do
     use Ecto.Model
 
     validate user,

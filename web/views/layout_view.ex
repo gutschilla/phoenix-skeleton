@@ -1,4 +1,4 @@
-defmodule Hello2.LayoutView do
-  use Hello2.Views
+defmodule Skeleton2.LayoutView do
+  use Skeleton2.Views
 
 end

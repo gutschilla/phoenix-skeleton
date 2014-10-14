@@ -2,6 +2,10 @@ defmodule Plug.Session.MEMCACHED do
     @moduledoc """
     Stores the session in a memcached table.
 
+    ## Vserion 0.2
+
+    * 0.2 - change arities of delete, get, put to match phoenix 0.5.0
+
     An established MEMCACHED connection instance via mcd is required for this
     store to work.
 
@@ -39,7 +43,7 @@ defmodule Plug.Session.MEMCACHED do
         Keyword.fetch!(opts, :table)
     end
 
-    def get(sid, table) do
+    def get( _conn, sid, table) do
         case :mcd.get( table, sid ) do
           {:error, :noproc}   -> raise "cannot find memcached proc"
           {:error, :notfound} -> {nil, %{}}
@@ -47,16 +51,16 @@ defmodule Plug.Session.MEMCACHED do
         end
     end
 
-    def put(nil, data, table) do
+    def put( _conn, nil, data, table) do
         put_new(data, table)
     end
 
-    def put(sid, data, table) do
+    def put( _conn, sid, data, table) do
         :mcd.set( table, sid, data )
     sid
     end
 
-    def delete(sid, table) do
+    def delete( _conn, sid, table) do
         :mcd.delete(table, sid)
         :ok
     end
@@ -64,6 +68,6 @@ defmodule Plug.Session.MEMCACHED do
     defp put_new(data, table, counter \\ 0)
         when counter < @max_tries do
             sid = :crypto.strong_rand_bytes(96) |> Base.encode64
-        put( sid, data, table )
+        put( nil, sid, data, table )
     end
 end
