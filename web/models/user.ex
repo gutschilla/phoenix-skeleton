@@ -16,5 +16,6 @@ defmodule Skeleton2.User do
         field :username,      :string
         field :password_hash, :string
         field :salt,          :string
+        has_many :user_userrole_maps, Skeleton2.UserUserroleMap, foreign_key: :userrole_id
     end
 end
