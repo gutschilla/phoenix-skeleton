@@ -1,13 +1,7 @@
 {% extends "../layout/frontend.html.dtl" %}
 {% block content %}
 <div class="jumbotron">
-  <h2>Hello!</h2>
-  <p class="lead">{{ message }}</p>
-  <pre>
-      {{ say_hello }}
-  </pre>
-  <pre>
-      {{ helpers.root }}
-  </pre>
+    <h2>Hello!</h2>
+    <p class="lead">{{ message }}</p>
 </div>
 {% endblock %}

@@ -1,17 +1,15 @@
 defmodule Skeleton2.PageController do
-  use Phoenix.Controller
-  alias Skeleton2.Router.Helpers
+    use Phoenix.Controller
+    import Skeleton2.Helpers, only: [ apply_defaults: 0, apply_defaults: 1 ]
 
-  plug :action
+    plug :action
 
     def index(conn, _params) do
         conn
         |> put_layout( :none )
-        |> render "index", %{
-            message:  "hello here",
-            helpers:   helpers(),
-            say_hello: fn() -> "hello" end
-        }
+        |> render "index", apply_defaults(%{
+            message:  "hello here"
+        })
     end
 
     def pdf( conn, _params ) do
@@ -25,15 +23,6 @@ defmodule Skeleton2.PageController do
         conn = send_file( conn, 200, ( pdf_file ), 0 ,  :all )
         File.rm! pdf_file
         conn
-    end
-
-    def helpers do
-        %{
-            path: %{
-                root:   Helpers.page_path(:index),
-                static: Helpers.page_path(:index) <> "static/",
-            }
-        }
     end
 
     def not_found(conn, _params) do

@@ -2,24 +2,24 @@ defmodule Skeleton2.AuthController do
     use Phoenix.Controller
     require Record
     Record.defrecord :credentials, [ username: "", password: ""]
+    import Skeleton2.Helpers, only: [ apply_defaults: 0, apply_defaults: 1 ]
     alias Skeleton2.Router.Helpers
 
     plug :action
 
     def index(conn, _params) do
         current_user = get_session( conn, :username )
-        # TODO: get this automagically
         url_login  = Helpers.auth_path(:login)  |> Helpers.url
         url_logout = Helpers.auth_path(:logout) |> Helpers.url
         conn
         |> put_layout( :none )
         |> render "index",
-        %{
+        apply_defaults(%{
             url_login:        url_login,
             url_logout:       url_logout,
             current_user:     current_user,
             is_authenticated: current_user != nil
-        }
+        })
     end
 
     def is_json( conn ) do
