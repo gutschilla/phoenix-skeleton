@@ -4,6 +4,9 @@
   <h2>Hello!</h2>
   <p class="lead">{{ message }}</p>
   <pre>
+      {{ say_hello }}
+  </pre>
+  <pre>
       {{ helpers.root }}
   </pre>
 </div>

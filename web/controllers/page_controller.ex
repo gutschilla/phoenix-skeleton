@@ -7,7 +7,11 @@ defmodule Skeleton2.PageController do
     def index(conn, _params) do
         conn
         |> put_layout( :none )
-        |> render "index", %{ message: "hello here", helpers: helpers() }
+        |> render "index", %{
+            message:  "hello here",
+            helpers:   helpers(),
+            say_hello: fn() -> "hello" end
+        }
     end
 
     def pdf( conn, _params ) do
