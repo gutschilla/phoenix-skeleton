@@ -79,7 +79,11 @@ defmodule Skeleton2.Navigation do
             children: Enum.filter(
                 node.children,
                 fn( child ) ->
-                    Enum.member? userroles, child.roles
+                    needed = Enum.into child.roles, HashSet.new
+                    having = Enum.into userroles,   HashSet.new
+                    # needed minus having shall be empty
+                    result = Set.difference( needed, having )
+                    Set.size( result ) == 0
                 end
             )
         }
