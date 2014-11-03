@@ -13,19 +13,14 @@ config :phoenix, Skeleton2.Router,
   secret_key_base: "ykra3/SIekQYAeCjsyNIUDxuelKgo2C+Zdp75agH7+2Bj0ShOhxohpfV37QUioGd9CIPtx8p9HPOwW3w7Q9B6A==",
   catch_errors: true,
   debug_errors: false,
-  error_controller: Skeleton2.PageController
-
+  error_controller: Skeleton2.PageController,
 # Session configuration
-config :phoenix, Skeleton2.Router,
-  session: [ store: :memcached, key: "skeletion2_key", table: :memcached_sessions ]
-
-# mount static at /static
-config :phoenix, Skeleton2.Router,
+  session: [ store: :memcached, key: "skeletion2_key", table: :memcached_sessions ],
   static: [ at: "/static", from: Mix.Project.config[:app] ]
 
 config :phoenix, :template_engines,
   dtl: PhoenixDtl.Engine
-  
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
