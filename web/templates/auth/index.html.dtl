@@ -1,8 +1,8 @@
 {% extends "../layout/admin.html.dtl" %}
 {% block content %}
-    {% if is_authenticated %}
+    {% if user.id  %}
         <div class="container">
-            <h2>Hello {{ current_user }}</h2>
+            <h2>Hello {{ user.username }}</h2>
             <form role="form"
                 action="{{ url_logout }}"
                 method="post"

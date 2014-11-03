@@ -33,6 +33,19 @@
                         </a>
                     </div>
 
+                    {% for node in navigation %}
+                        {% if node.level < 1 %}
+                        {% elif node.up %}
+                            <ul class="nav navbar-navi">
+                        {% elif node.down %}
+                            </ul>
+                        {% else %}
+                            <li>
+                                <a href="{{ node.url }}">{{ node.name }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+
                     <!--
                     :   my $current_node = $c.navigation.current_node;
                     :   macro navigation -> $tree, $level {

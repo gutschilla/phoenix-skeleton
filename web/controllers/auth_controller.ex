@@ -1,27 +1,25 @@
 defmodule Skeleton2.AuthController do
     use Phoenix.Controller
-    require Record
-    Record.defrecord :credentials, [ username: "", password: ""]
-    import Skeleton2.Helpers, only: [ apply_defaults: 0, apply_defaults: 1 ]
+
+    import Skeleton2.Helpers, only: [ apply_defaults: 2 ]
     alias Skeleton2.Router.Helpers
 
     plug :action
 
     def index(conn, _params) do
-        current_user = get_session( conn, :username )
-        url_login  = Helpers.auth_path(:login)  |> Helpers.url
-        url_logout = Helpers.auth_path(:logout) |> Helpers.url
+        url_login  = Helpers.auth_path(:login)
+        url_logout = Helpers.auth_path(:logout)
         conn
         |> put_layout( :none )
-        |> render "index",
-        apply_defaults(%{
-            url_login:        url_login,
-            url_logout:       url_logout,
-            current_user:     current_user,
-            is_authenticated: current_user != nil
-        })
+        |> render( "index", apply_defaults( conn,
+            %{
+                url_login:  url_login,
+                url_logout: url_logout,
+            }
+        ))
     end
 
+    # TODO: put into Helper
     def is_json( conn ) do
         {"accept",       accept       } = List.keyfind( conn.req_headers, "accept", 0 )
         {"content-type", content_type } = List.keyfind( conn.req_headers, "content-type", 0 )
@@ -29,18 +27,15 @@ defmodule Skeleton2.AuthController do
     end
 
     def login( conn, %{ "password" => password, "username" => username } ) do
-        credentials = credentials( username: username, password: password )
-        login_result = authenticate( :db_plain, credentials )
-
-        if login_result == :ok do
-            conn = put_session( conn, :username, username )
+        result = Skeleton2.User.Helper.auth( username, password )
+        success = case result do
+            { :ok, user } -> conn = put_session( conn, :user, user); true
+            _ -> false
         end
-
         case is_json( conn ) do
-            true  -> json conn, JSON.encode!( %{ success: login_result == :ok, reason: login_result } )
+            true  -> json conn, JSON.encode!( %{ success: success } )
             false -> redirect conn, Helpers.auth_path(:index)
         end
-
     end
 
     def login( conn, _ ) do
@@ -48,19 +43,21 @@ defmodule Skeleton2.AuthController do
     end
 
     def logout( conn, _params ) do
-        current_user = get_session( conn, :username )
-        logout_result = case current_user do
+        current_user = get_session( conn, :user )
+        result = case current_user do
             nil -> :not_authenticated
             _   -> :ok
         end
-        if :ok == logout_result do
-            conn = delete_session( conn, :username )
+        if :ok == result do
+            conn = delete_session( conn, :user )
         end
         case is_json( conn ) do
-            true  -> json conn, JSON.encode!( %{ success: logout_result == :ok, reason: logout_result } )
+            true  -> json conn, JSON.encode!( %{ success: result == :ok, reason: result } )
             false -> redirect conn, Helpers.auth_path(:index)
         end
     end
+
+    ###
 
     def not_found(conn, _params) do
         render conn, "not_found"
@@ -68,36 +65,6 @@ defmodule Skeleton2.AuthController do
 
     def error(conn, _params) do
         render conn, "error"
-    end
-
-    def get_users do
-        %{ "testuser": "testpass" }
-    end
-
-    def check_password( :db_plain, user, password ) do
-        case user.password_hash == password do
-            true  -> :ok
-            false -> :wrong_password
-        end
-    end
-
-    def authenticate( :plain, {:credentials, str_username, password} ) do
-        username = String.to_atom( str_username )
-        users = get_users()
-        case Map.has_key?( users, username) do
-            true  -> if users[ username ] == to_string( password ) do :ok else :wrong_password end
-            false -> :unknown
-        end
-    end
-
-    def authenticate( :db_plain, {:credentials, str_username, password} ) do
-        import Ecto.Query
-        query = from u in Skeleton2.User, where: u.username == ^str_username
-        case Repo.all( query ) do
-            []           -> :unknown
-            [ user ]     -> check_password( :db_plain, user, password )
-            [ _user | _ ] -> :not_unique
-        end
     end
 
 end

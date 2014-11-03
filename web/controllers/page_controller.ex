@@ -1,13 +1,13 @@
 defmodule Skeleton2.PageController do
     use Phoenix.Controller
-    import Skeleton2.Helpers, only: [ apply_defaults: 0, apply_defaults: 1 ]
+    import Skeleton2.Helpers, only: [ apply_defaults: 2 ]
 
     plug :action
 
     def index(conn, _params) do
         conn
         |> put_layout( :none )
-        |> render "index", apply_defaults(%{
+        |> render "index", apply_defaults( conn, %{
             message:  "hello here"
         })
     end
