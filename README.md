@@ -8,21 +8,22 @@
     - [ ] Salted, hashed passwords
 - [ ] Authorization
     - [x] Userroles Ecto defintion
-    - [ ] Hello2.Authorization.check_user_roles([roles]) )
-- [x] Memcahed Session store
+    - [x] User object that contains matchable roles
+- [x] Memcached Session store
 - [x] Django Templates (erlyDTL)
-    - [ ] decide if might be easier to just use eex templates (but I love template inheritance!)
 - [x] Ecto models
 - [x] call/process external programs via porcelain (mainly for PDF generation)
     - [ ] stream input/output instead of writing to and reading from temp files
-- [ ] pluggable Navigation tree
+- [x] pluggable Navigation tree
+    - [x] navigation tree that depends on user roles
 - [ ] CouchDB connector
 - [ ] Hello2.Admin.RESTCrud controller
     - [ ] validate/save
     - [ ] uploads
     - [ ] Image resizing
 - [ ] TinySite CMS
-- [ ] Create mix task to boostrap components inszead of copy/paste+search/replace
+- [ ] Create mix task to boostrap components instead of copy/paste+search/replace
+- [ ] BUGFIX: Skeleton2.Router.url shall work again
 
 To start your new Phoenix application you have to:
 
