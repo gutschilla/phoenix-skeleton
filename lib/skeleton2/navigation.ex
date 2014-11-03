@@ -89,4 +89,38 @@ defmodule Skeleton2.Navigation do
         }
     end
 
+    def as_simple_hash( node, level ) do
+        %{
+            name:  node.name,
+            url:   node.url,
+            level: level,
+            has_children: case length node.children do 0 -> false; _ -> true end
+        }
+    end
+
+    def allowed_as_list( userroles ) do
+        as_list allowed_tree( userroles, tree() ) 
+    end
+
+    def as_list() do
+        as_list tree
+    end
+    def as_list( node ) do
+        as_list( node, 0 )
+    end
+    def as_list( node = %Node{ children: [] }, level ) do
+        [ as_simple_hash( node, level ) ]
+    end
+    def as_list( node, level ) do
+        List.flatten([
+            as_simple_hash( node, level ),
+            %{ up: true, level: level },
+            Enum.map(
+                node.children,
+                fn(n) -> as_list( n, level + 1 ) end
+            ),
+            %{ down: true, level: level },
+        ])
+    end
+
 end
