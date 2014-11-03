@@ -16,7 +16,7 @@ defmodule Skeleton2.User do
         field :username,      :string
         field :password_hash, :string
         field :salt,          :string
-        has_many :user_userrole_maps, Skeleton2.UserUserroleMap, foreign_key: :userrole_id
+        has_many :user_userrole_maps, Skeleton2.UserUserroleMap, foreign_key: :user_id
     end
 
 end
@@ -24,22 +24,57 @@ end
 defmodule Skeleton2.User.Helper do
     import Ecto.Query
 
-    def get_query( user_id, :roles ) when is_number( user_id ) do
-        query = Skeleton2.Userrole
-        # join with map
-        |> Ecto.Query.join( :inner, [role], map in role.user_userrole_maps  )
-        # where user_id fits
-        |> Ecto.Query.where( [_role, map], map.user_id == ^user_id )
-        query
+    def auth_query( user, pass ) do
+        Skeleton2.User
+        |> Ecto.Query.where(
+            [user],
+            user.username == ^user
+            and user.password_hash == ^pass
+        )
     end
 
-    # USAGE:
-    # user  = Repo.get( Skeleton2.User, 1 )
-    # roles = Skeleton2.User.Helper.roles_of( user )
-    def roles_of( user ) do
-        get_query( user.id, :roles )
+    def auth( user, pass ) do
+        case auth_query( user, pass ) |> Repo.all do
+            [ user ] -> { :ok, user }
+            []       -> { :not_found }
+        end
+    end
+
+    def roles_query do
+        Skeleton2.Userrole
+        # join with map
+        |> Ecto.Query.join( :inner, [role], map in role.user_userrole_maps  )
+        # join with users
+        |> Ecto.Query.join( :inner, [role, map ], user in map.user  )
+    end
+
+    def roles_query( u ) do
+        roles_query
+        |> Ecto.Query.where(
+            [ role, map, user ],
+            user.id == ^u.id
+        )
+    end
+
+    def roles( user ) do
+        roles_query( user )
         |> Repo.all
-        |> Enum.map( fn(userrole) -> userrole.name end )
+        |> Enum.map( fn(r) -> r.name end )
+    end
+
+    def get( nil ) do
+        %{
+            id:       0,
+            username: "",
+            roles:    []
+        }
+    end
+    def get( user ) do
+        %{
+            id:       user.id,
+            username: user.username,
+            roles:    roles( user )
+        }
     end
 
 end

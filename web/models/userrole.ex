@@ -7,6 +7,6 @@ defmodule Skeleton2.Userrole do
 
     schema "userroles" do
         field :name, :string
-        has_many :user_userrole_maps, Skeleton2.UserUserroleMap, foreign_key: :user_id
+        has_many :user_userrole_maps, Skeleton2.UserUserroleMap, foreign_key: :userrole_id
     end
 end
