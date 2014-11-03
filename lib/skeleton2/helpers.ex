@@ -8,8 +8,9 @@ defmodule Skeleton2.Helpers do
 
         apply_defaults( vars )
         |> Dict.put( :user, user )
-        |> Dict.put( :navigation, Skeleton2.Navigation.allowed_as_list( user.roles ) )
+        |> Dict.put( :navigation, tl( Skeleton2.Navigation.allowed_as_list( user.roles ) ) )
     end
+    
 
     def apply_defaults( vars ) do
         # default stash that doesn't depend on conn

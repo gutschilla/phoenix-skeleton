@@ -99,7 +99,7 @@ defmodule Skeleton2.Navigation do
     end
 
     def allowed_as_list( userroles ) do
-        as_list allowed_tree( userroles, tree() ) 
+        as_list allowed_tree( userroles, tree() )
     end
 
     def as_list() do

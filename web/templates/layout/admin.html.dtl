@@ -34,9 +34,12 @@
                     </div>
 
                     {% for node in navigation %}
-                        {% if node.level < 1 %}
-                        {% elif node.up %}
-                            <ul class="nav navbar-navi">
+                        {% if node.up %}
+                            <ul class="
+                                nav
+                                navbar-nav
+                                "
+                            >
                         {% elif node.down %}
                             </ul>
                         {% else %}
