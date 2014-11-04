@@ -1,7 +1,7 @@
 defmodule Skeleton2.AuthController do
     use Phoenix.Controller
 
-    import Skeleton2.Helpers, only: [ apply_defaults: 2 ]
+    import Skeleton2.Helpers, only: [ apply_defaults: 2, json_request?: 1 ]
     alias Skeleton2.Router.Helpers
 
     plug :action
@@ -19,20 +19,13 @@ defmodule Skeleton2.AuthController do
         ))
     end
 
-    # TODO: put into Helper
-    def is_json( conn ) do
-        {"accept",       accept       } = List.keyfind( conn.req_headers, "accept", 0 )
-        {"content-type", content_type } = List.keyfind( conn.req_headers, "content-type", 0 )
-        String.contains?( accept, "application/json") || String.contains?( content_type, "application/json")
-    end
-
     def login( conn, %{ "password" => password, "username" => username } ) do
         result = Skeleton2.User.Helper.auth( username, password )
         success = case result do
             { :ok, user } -> conn = put_session( conn, :user, user); true
             _ -> false
         end
-        case is_json( conn ) do
+        case json_request?( conn ) do
             true  -> json conn, JSON.encode!( %{ success: success } )
             false -> redirect conn, Helpers.auth_path(:index)
         end
@@ -51,7 +44,7 @@ defmodule Skeleton2.AuthController do
         if :ok == result do
             conn = delete_session( conn, :user )
         end
-        case is_json( conn ) do
+        case json_request?( conn ) do
             true  -> json conn, JSON.encode!( %{ success: result == :ok, reason: result } )
             false -> redirect conn, Helpers.auth_path(:index)
         end
