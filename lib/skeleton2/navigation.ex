@@ -103,24 +103,51 @@ defmodule Skeleton2.Navigation do
     end
 
     def as_list() do
-        as_list tree
+        # using as_list2, now
+        as_list tree, 0
     end
-    def as_list( node ) do
-        as_list( node, 0 )
+    def as_list( tree ) do
+        # using as_list2, now
+        as_list tree, 0
     end
-    def as_list( node = %Node{ children: [] }, level ) do
-        [ as_simple_hash( node, level ) ]
+
+    def as_list( node, 0 ) do
+        List.flatten [
+            %{ ul_start: true, classes: ["nav navbar-nav"] },
+            li_children( node, 0 ),
+            %{ ul_stop: true },
+        ]
     end
     def as_list( node, level ) do
-        List.flatten([
-            as_simple_hash( node, level ),
-            %{ up: true, level: level },
-            Enum.map(
-                node.children,
-                fn(n) -> as_list( n, level + 1 ) end
-            ),
-            %{ down: true, level: level },
-        ])
+        List.flatten [
+            %{ ul_start: true, classes: ["dropdown-menu"] },
+            li_children( node, level ),
+            %{ ul_stop: true },
+        ]
+    end
+
+    def li_children( node, level ) do
+        Enum.map node.children, fn( n ) ->
+            case length( n.children ) do
+                0 -> [
+                    %{ li_start: true, classes: [] },
+                    %{ anchor:   true, href: n.url, text: n.name },
+                    %{ li_stop:  true },
+                ]
+                _ -> [
+                    # first, the menu item
+                    %{ li_start: true, classes: ["before-dropdown"]},
+                    %{ anchor:   true, href: n.url, text: n.name },
+                    %{ li_stop:  true },
+
+                    # second, the dropdown-toggle and the dropdown
+                    %{ li_start: true, classes: ["dropdown"]},
+                    %{ dropdown_toggle: true },
+                    as_list( n, level + 1 ), # ul inside
+                    %{ li_stop:  true },
+                ]
+            end
+        end
     end
 
 end

@@ -33,57 +33,32 @@
                         </a>
                     </div>
 
-                    {% for node in navigation %}
-                        {% if node.up %}
-                            <ul class="
-                                nav
-                                navbar-nav
-                                "
-                            >
-                        {% elif node.down %}
+                    {% for item in navigation %}
+                        {% if item.ul_start %}
+                            <ul {% if item.classes|length > 0 %}class="{{ item.classes | join: " " }}"{% endif %}>
+                        {% elif item.ul_stop %}
                             </ul>
-                        {% else %}
-                            <li>
-                                <a href="{{ node.url }}">{{ node.name }}</a>
+                        {% elif item.li_start %}
+                            <li {% if item.classes|length > 0 %}class="{{ item.classes | join: " " }}"{% endif %}>
+                        {% elif item.li_stop %}
                             </li>
+                        {% elif item.anchor %}
+                            <a href="{{ item.href }}">{{ item.text }}</a>
+                        {% elif item.dropdown_toggle %}
+                            <a href="#" class="dropdown-toggle " data-toggle="dropdown"><b class="caret"></b></a>
                         {% endif %}
                     {% endfor %}
 
-                    <!--
-                    :   my $current_node = $c.navigation.current_node;
-                    :   macro navigation -> $tree, $level {
-                        :   my $daughters = $tree.arrayref_of('allowed_daughters', $c );
-                        :   if ( $daughters.size() ) {
-                            :   my $classes = $level ? ['dropdown-menu'] : ['nav', 'navbar-nav'];
-                            :   my $roles   = $level ? ['none']          : ['menu'];
-                            <ul class="<: $classes.join(' ') :>" role="<: $roles.join(' ') :>" >
-                                :   for $daughters -> $node {
-                                    :   if ( $node.arrayref_of('allowed_daughters', $c ).size() ) {
-                                            <li class="before-dropdown <: $current_node == $node ? 'active' : 'inactive' :>"><a href="<: $node.url :>"><: $node.name :></a></li>
-                                            <li class="dropdown <: $current_node == $node ? 'active' : 'inactive' :>">
-                                                <a href="#" class="dropdown-toggle " data-toggle="dropdown"><b class="caret"></b></a>
-                                                :   navigation( $node, $level + 1 )
-                                            </li>
-                                    :   }
-                                    :   else {
-                                            <li class="<: $current_node == $node ? 'active' : 'inactive' :>"><a href="<: $node.url :>"><: $node.name :></a></li>
-                                            :   navigation( $node, $level + 1 )
-                                    :   }
-                                :   }
-                            </ul>
-                        :   }
-                    :   }
-                    :   navigation( $c.navigation.node_of('/admin', 'navi'), 0 );
-                    -->
-
-                    <ul class="nav navbar-nav navbar-right <: 'hidden' if not $c.user :>">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Konto<b class="caret"></b></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="<: $c.uri_for('/auth/do_logout') :>">Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                    {% if user.id %}
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Konto<b class="caret"></b></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="/auth/logout">Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    {% endif %}
                 </div> <!--/.container-fluid-->
             </nav>
 

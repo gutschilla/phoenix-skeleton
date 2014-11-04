@@ -17,7 +17,7 @@ defmodule Skeleton2.Helpers do
 
         apply_defaults( vars )
         |> Dict.put( :user, user )
-        |> Dict.put( :navigation, tl( Skeleton2.Navigation.allowed_as_list( user.roles ) ) )
+        |> Dict.put( :navigation, Skeleton2.Navigation.allowed_as_list( user.roles ) )
     end
 
 
@@ -25,8 +25,8 @@ defmodule Skeleton2.Helpers do
         # default stash that doesn't depend on conn
         if ! Dict.has_key? vars, :path do
             vars = Dict.put vars, :path, %{
-                root:   Skeleton2.Router.Helpers.page_path(:index),
-                static: Skeleton2.Router.Helpers.page_path(:index) <> "static/",
+                root:   "/",
+                static: "/static/",
             }
         end
         vars
