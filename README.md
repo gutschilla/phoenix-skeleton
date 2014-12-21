@@ -1,5 +1,11 @@
 # Phoenix-Sekeleton
 
+This is an old version. The current efforts in directory "next" are made to implement 
+- standard EEX templates (erlydtl works, but relaoding is not supported and error messages are a pain)(35%)
+- using the phoenix 0.7.2 API(done)
+- package all dependencies Navigation(done), Helpers, PDF) in own umbrella project
+- let memcached session be initializes as application (done)
+
 ## Feature Roadmap
 - [x] Basic routing
 - [x] Authentication
