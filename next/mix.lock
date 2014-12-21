@@ -1,0 +1,13 @@
+%{"corman": {:git, "git://github.com/EchoTeam/corman.git", "e3c4c9f602441b4d9b8f9f8ea2813b3d791ec9e1", [branch: "master"]},
+  "cowboy": {:hex, :cowboy, "1.0.0"},
+  "cowlib": {:hex, :cowlib, "1.0.0"},
+  "dht_ring": {:git, "git://github.com/EchoTeam/dht_ring.git", "d5b880ad76aefc81547dbb76b48a97a01d52ff41", [branch: "master"]},
+  "goldrush": {:git, "git://github.com/DeadZen/goldrush.git", "1d883423ac360b3536ca52dc733a0164bacf3109", [tag: "0.1.5"]},
+  "lager": {:git, "git://github.com/basho/lager.git", "ad400896af5b1ad8b4f7a4d34e609b5a990640bb", [tag: "2.0.1"]},
+  "mcd": {:git, "git://github.com/EchoTeam/mcd.git", "4a282234795ecb31f93f59fbaea7940276a0a179", []},
+  "phoenix": {:hex, :phoenix, "0.7.2"},
+  "phoenix_skeleton_deps_umbrella": {:git, "git://github.com/gutschilla/phoenix_skeleton_deps_umbrella.git", "559034b598ae382e2ea669f34b6e99078dcb6540", [branch: "master"]},
+  "plug": {:hex, :plug, "0.9.0"},
+  "plug_session_memcached": {:git, "git://github.com/gutschilla/plug-session-memcached.git", "d93e5ba94240607df78d833d27ada997cc58b9d7", [branch: "master"]},
+  "poison": {:hex, :poison, "1.3.0"},
+  "ranch": {:hex, :ranch, "1.0.0"}}

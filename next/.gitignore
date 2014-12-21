@@ -1,0 +1,5 @@
+/_build
+/deps
+/priv/static/bower_components
+erl_crash.dump
+*.ez
