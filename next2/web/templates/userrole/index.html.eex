@@ -1,0 +1,22 @@
+<h2>Listing userroles</h2>
+
+<table>
+  <tr>
+    <th>Name</th>
+
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+<%= for userrole <- @userroles do %>
+  <tr>
+    <td><%= userrole.name %></td>
+
+    <td><%= link "Show", to: userrole_path(@conn, :show, userrole) %></td>
+    <td><%= link "Edit", to: userrole_path(@conn, :edit, userrole) %></td>
+    <td><%= link "Delete", to: userrole_path(@conn, :delete, userrole), method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link "New userrole", to: userrole_path(@conn, :new) %>

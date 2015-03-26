@@ -1,0 +1,12 @@
+<h2>Show userrole</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @userrole.name %>
+  </li>
+
+</ul>
+
+<%= link "Back", to: userrole_path(@conn, :index) %>
