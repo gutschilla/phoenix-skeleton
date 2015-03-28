@@ -5,8 +5,9 @@
 - [x] Authentication
     - [x] from Database (Ecto/Postgres)
     - [ ] Salted, hashed passwords
+    - [ ] Merge Login from 0.7  
 - [ ] Authorization
-    - [x] Userroles Ecto defintion (2B merged from v0.7 branch)
+    - [x] Userroles Ecto defintion 
     - [x] User object that contains matchable roles
 - [x] Memcached Session store
     - this is done via the plug gutschilla/plug-session-memcached
