@@ -30,6 +30,6 @@ config :logger, :console, format: "[$level] $message\n"
 # Configure your database
 config :skeleton4, Skeleton4.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "#bau.hof#",
+  username: "skeleton4_user",
+  password: "skeleton4_pass",
   database: "skeleton4"
