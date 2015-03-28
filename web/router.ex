@@ -1,27 +1,29 @@
-defmodule Skeleton2.Router do
+defmodule Skeleton4.Router do
   use Phoenix.Router
 
-  scope "/" do
-    # Use the default browser stack.
-    pipe_through :browser
+  pipeline :browser do
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_flash
+    plug :protect_from_forgery
+  end
 
-    get "/",    Skeleton2.PageController, :index
-    get "/pdf", Skeleton2.PageController, :pdf
+  pipeline :api do
+    plug :accepts, ["json"]
+  end
 
-    scope path: "/auth" do
-        get  "/",       Skeleton2.AuthController, :index  , as: :auth
-        post "/login",  Skeleton2.AuthController, :login  , as: :auth
-        post "/logout", Skeleton2.AuthController, :logout , as: :auth
-    end
+  scope "/", Skeleton4 do
+    pipe_through :browser # Use the default browser stack
+
+    get "/",      PageController, :index
+    get "/hello", PageController, :hello
+    
+    resources "/userroles", UserroleController
+
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api" do
+  # scope "/api", Skeleton4 do
   #   pipe_through :api
   # end
-
-    pipeline :browser do
-        plug :super
-    end
-
 end

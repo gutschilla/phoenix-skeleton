@@ -5,26 +5,22 @@
 # is restricted to this project.
 use Mix.Config
 
-# Configures the router
-config :phoenix, Skeleton2.Router,
+# Configures the endpoint
+config :skeleton4, Skeleton4.Endpoint,
   url: [host: "localhost"],
-  http: [port: System.get_env("PORT")],
-  https: false,
-  secret_key_base: "ykra3/SIekQYAeCjsyNIUDxuelKgo2C+Zdp75agH7+2Bj0ShOhxohpfV37QUioGd9CIPtx8p9HPOwW3w7Q9B6A==",
-  catch_errors: true,
+  secret_key_base: "Xr16fZ4OwibbjqGi8gy8ectpRuGuPpECjCbG9ChpCfqE0W1Y3kJrDUmRNlWSFeQ3",
   debug_errors: false,
-  error_controller: Skeleton2.PageController,
-# Session configuration
-  session: [ store: :memcached, key: "skeletion2_key", table: :memcached_sessions ],
-  static: [ at: "/static", from: Mix.Project.config[:app] ]
-
-config :phoenix, :template_engines,
-  dtl: PhoenixDtl.Engine
+  pubsub: [name: Skeleton4.PubSub,
+           adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
+  
+# Configures Sessions
+config :phoenix, MyApp.Router,
+  session: [store: :memcached, key: "Skeleton4"]
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

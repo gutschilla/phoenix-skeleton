@@ -1,7 +1,0 @@
-{% extends "../layout/frontend.html.dtl" %}
-{% block content %}
-<div class="jumbotron">
-    <h2>Hello!</h2>
-    <p class="lead">{{ message }}</p>
-</div>
-{% endblock %}

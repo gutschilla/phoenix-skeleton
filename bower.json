@@ -1,27 +1,28 @@
 {
-  "name": "phoenix-skeleton2",
-  "version": "0.1.0",
+  "name": "phoenix-skeleton4",
+  "version": "0.0.1",
   "authors": [
     "Martin Gutsch <gutsch@zwoelf.net>"
   ],
-  "description": "Skeleton App basen on phoenix framework",
+  "description": "Phoenix Skeleton App",
   "keywords": [
+    "erlang",
     "elixir",
     "phoenix",
-    "skeleton"
+    "skeleton",
+    "authentication",
+    "postgre"
   ],
   "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
-    "priv/static/bower_components",
     "test",
     "tests"
   ],
   "dependencies": {
-    "jquery": "~2.1.1",
-    "bootstrap": "~3.2.0",
-    "underscore": "~1.7.0"
+    "bootstrap": "~3.3.4",
+    "jquery": "~2.1.3"
   }
 }

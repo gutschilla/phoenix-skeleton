@@ -1,12 +1,18 @@
-defmodule Skeleton2.Userrole do
-    use Ecto.Model
+defmodule Skeleton4.Userrole do
+  use Skeleton4.Web, :model
 
-    validate userrole,
-        name: present(),
-        name: has_length(1..64)
+  schema "userroles" do
+    field :name, :string
+    has_many  :user_userrole_maps, Skeleton4.UserUserroleMap
+  end
 
-    schema "userroles" do
-        field :name, :string
-        has_many :user_userrole_maps, Skeleton2.UserUserroleMap, foreign_key: :userrole_id
-    end
+  @doc """
+  Creates a changeset based on the `model` and `params`.
+
+  If `params` are nil, an invalid changeset is returned
+  with no validation performed.
+  """
+  def changeset(model, params \\ nil) do
+    cast(model, params, ~w(name), ~w())
+  end
 end
