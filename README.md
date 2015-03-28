@@ -9,6 +9,7 @@
     - [x] Userroles Ecto defintion (2B merged from v0.7 branch)
     - [x] User object that contains matchable roles
 - [x] Memcached Session store
+    - this is done via the plug gutschilla/plug-session-memcached
     - [ ] make Memcached host/port configurable
 - [x] Django Templates (erlyDTL) => removed, see 0.7. now using eex (running with the crowd)
 - [x] Ecto models
@@ -16,6 +17,7 @@
     - [ ] stream input/output instead of writing to and reading from temp files
 - [x] pluggable Navigation tree
     - [x] navigation tree that depends on user roles
+        - this is done via the gutschilla/phoenix_skeleton_deps_umbrella dependecy which includes then NavigationTree module
 - [ ] CouchDB connector
 - [ ] Hello2.Admin.RESTCrud controller
     - [ ] validate/save
