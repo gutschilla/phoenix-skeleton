@@ -77,4 +77,19 @@ defmodule Skeleton4.User.Helper do
   """
   def roles_of( user ) do roles_of_0( user ) end
 
+  def make_password_hash( password ) do
+    salt = Enum.map(1..8, fn(_) -> :random.uniform(256)-1 end ) |> List.to_string
+    make_password_hash( password, salt )
+  end
+
+  def make_password_hash( password, salt ) do
+    hash = :crypto.hmac(:sha256, password, salt ) |> :binary.bin_to_list |> List.to_string
+    { salt, hash }
+  end
+  
+  def verify( password, salt, password_hash ) do
+    { _salt, hash } = make_password_hash( password, salt )
+    hash == password_hash
+  end
+
 end
