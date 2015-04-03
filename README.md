@@ -4,11 +4,12 @@
 - [x] Basic routing
 - [x] Authentication
     - [x] from Database (Ecto/Postgres)
-    - [x] Salted, hashed passwords (using hmac_sha256)
-    - [ ] Merge Login from 0.7  
-- [ ] Authorization
+    - [x] salted/hashed passwords (hmac_sha256)
+    - [x] basic Login page
+- [x] Authorization
     - [x] Userroles Ecto defintion 
-    - [x] User object that contains matchable roles
+    - [x] Skeleton4.Helper.roles_of( user ) returns string_
+    - [ ] Means to check for roles in controllers/actions
 - [x] Memcached Session store
     - this is done via the plug gutschilla/plug-session-memcached
     - [ ] make Memcached host/port configurable
