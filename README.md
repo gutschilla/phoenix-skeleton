@@ -4,7 +4,7 @@
 - [x] Basic routing
 - [x] Authentication
     - [x] from Database (Ecto/Postgres)
-    - [ ] Salted, hashed passwords
+    - [x] Salted, hashed passwords (using hmac_sha256)
     - [ ] Merge Login from 0.7  
 - [ ] Authorization
     - [x] Userroles Ecto defintion 

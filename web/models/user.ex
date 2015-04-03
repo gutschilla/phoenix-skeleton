@@ -87,9 +87,30 @@ defmodule Skeleton4.User.Helper do
     { salt, hash }
   end
   
-  def verify( password, salt, password_hash ) do
+  def verify_password( password, salt, password_hash ) do
     { _salt, hash } = make_password_hash( password, salt )
     hash == password_hash
   end
+
+
+  @doc """
+  Verifies a user's password. Returns true/false.
+  """
+  def verify_password( user, password ) do
+    verify_password( password, user.salt, user.password_hash )
+
+  end
+
+  @doc """
+  Generates a random salt and sets the password_hash accordingly
+  """  
+  
+  @spec set_password( user::Skeleton4.User.t, password::String.t ) :: Skeleton4.User.t
+
+  def set_password( user, password  ) do
+    { salt, hash } = make_password_hash( password )
+    %{ user | salt: salt, password_hash: hash}    
+  end
+
 
 end
