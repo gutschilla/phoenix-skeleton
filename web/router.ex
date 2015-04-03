@@ -22,6 +22,13 @@ defmodule Skeleton4.Router do
 
   end
 
+  scope "/auth", Skeleton4 do
+    pipe_through :browser
+    get  "/",       AuthController, :index
+    post "/login",  AuthController, :login
+    post "/logout", AuthController, :logout
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", Skeleton4 do
   #   pipe_through :api

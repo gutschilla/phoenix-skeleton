@@ -1,4 +1,4 @@
-defmodule Skeleton4.LayoutView do
+defmodule Skeleton4.AuthView do
   use Skeleton4.Web, :view
 
   def get_session( conn, atom ) do

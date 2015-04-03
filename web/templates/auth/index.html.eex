@@ -1,0 +1,31 @@
+<%= if get_flash( @conn, :login_success ) do %>
+  <p>Successfully logged in <%= get_session( @conn, :user ).username %> </p>
+<%= end %>
+  
+<%= if get_flash( @conn, :login_failure ) do %>
+  <p>Wrong username or password.</p>
+<%= end %>
+
+<%= if get_session( @conn, :user ) != nil do %>
+
+  <p>Welcome, <%= get_session( @conn, :user ).username %></p>
+  <form method="post" action="<%= Skeleton4.Router.Helpers.auth_path( @conn, :logout ) %>" >
+    <input type="hidden" name="_csrf_token" value="<%= Plug.CSRFProtection.get_csrf_token %>" />
+    <button type="submit">Logout</button>
+  </form>
+
+<%= else %> 
+
+  <form method="post" action="<%= Skeleton4.Router.Helpers.auth_path( @conn, :login ) %>" >
+    <input type="hidden" name="_csrf_token" value="<%= Plug.CSRFProtection.get_csrf_token %>" />
+    <label>username
+      <input name="username" type="text"/>
+    </label>
+
+    <label>password
+      <input name="password" type="password"/>
+    </label>
+    <button type="submit">Login</button>
+  </form>
+
+<%= end %>
