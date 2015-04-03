@@ -77,6 +77,13 @@ defmodule Skeleton4.User.Helper do
   """
   def roles_of( user ) do roles_of_0( user ) end
 
+  def get_by_username( username ) do
+    query = Skeleton4.User
+    |> Ecto.Query.where( [user], user.username == ^username )
+    |> Ecto.Query.limit( [user], 1 )
+    Skeleton4.Repo.all( query ) |> List.first
+  end
+
   def make_password_hash( password ) do
     salt = Enum.map(1..8, fn(_) -> :random.uniform(256)-1 end ) |> List.to_string
     make_password_hash( password, salt )
