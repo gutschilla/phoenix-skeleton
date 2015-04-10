@@ -1,6 +1,6 @@
 # Phoenix-Sekeleton
 
-Master branch currently supports Phoenix v0.10.0 Current version of Phoenix is 0.11.0, now (by April 2015) and will be supported soon (by, well, soon)
+Master branch currently supports Phoenix v0.11.0
 
 ## Feature Roadmap
 - [x] Basic routing

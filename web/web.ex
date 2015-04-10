@@ -8,19 +8,17 @@ defmodule Skeleton4.Web do
       use Skeleton4.Web, :controller
       use Skeleton4.Web, :view
 
-  Keep the definitions in this module short and clean,
-  mostly focused on imports, uses and aliases.
+  The definitions below will be executed for every view,
+  controller, etc, so keep them short and clean, focused
+  on imports, uses and aliases.
+
+  Do NOT define functions inside the quoted expressions
+  below.
   """
 
-  def view do
+  def model do
     quote do
-      use Phoenix.View, root: "web/templates"
-
-      # Import URL helpers from the router
-      import Skeleton4.Router.Helpers
-
-      # Import all HTML functions (forms, tags, etc)
-      use Phoenix.HTML
+      use Ecto.Model
     end
   end
 
@@ -28,17 +26,40 @@ defmodule Skeleton4.Web do
     quote do
       use Phoenix.Controller
 
-      # Alias the data repository as a convenience
+      # Alias the data repository and import query/model functions
       alias Skeleton4.Repo
+      import Ecto.Model
+      import Ecto.Query, only: [from: 2]
 
       # Import URL helpers from the router
       import Skeleton4.Router.Helpers
     end
   end
 
-  def model do
+  def view do
     quote do
-      use Ecto.Model
+      use Phoenix.View, root: "web/templates"
+
+      # Import convenience functions from controllers
+      import Phoenix.Controller, only: [get_flash: 2]
+
+      # Import URL helpers from the router
+      import Skeleton4.Router.Helpers
+
+      # Use all HTML functionality (forms, tags, etc)
+      use Phoenix.HTML
+    end
+  end
+
+  def channel do
+    quote do
+      use Phoenix.Channel
+
+      # Alias the data repository and import query/model functions
+      alias Skeleton4.Repo
+      import Ecto.Model
+      import Ecto.Query, only: [from: 2]
+
     end
   end
 

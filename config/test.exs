@@ -12,8 +12,8 @@ config :logger, level: :warn
 # Configure your database
 config :skeleton4, Skeleton4.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "#bau.hof#",
+  username: "skeleton4_user",
+  password: "skeleton4_pass",
   database: "skeleton4",
   size: 1,
   max_overflow: false

@@ -8,6 +8,7 @@ use Mix.Config
 # Configures the endpoint
 config :skeleton4, Skeleton4.Endpoint,
   url: [host: "localhost"],
+  root: Path.expand("..", __DIR__),
   secret_key_base: "Xr16fZ4OwibbjqGi8gy8ectpRuGuPpECjCbG9ChpCfqE0W1Y3kJrDUmRNlWSFeQ3",
   debug_errors: false,
   pubsub: [name: Skeleton4.PubSub,
