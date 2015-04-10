@@ -12,17 +12,13 @@
   </head>
 
   <body>
-    <div class="container">
-      <div class="header">
+      <nav class="navbar navbar-default">
+      <div class="container-fluid">
         <%= safe Skeleton4.NavigationTree.as_html_for_user_id( get_user_id( @conn ) ) %>
       </div>
-
+      </nav>
+    <div class="container-fluid">
       <%= @inner %>
-
-      <div class="footer">
-        <p><a href="http://phoenixframework.org">phoenixframework.org</a></p>
-      </div>
-
     </div> <!-- /container -->
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
     <script>require("web/static/js/app")</script>
