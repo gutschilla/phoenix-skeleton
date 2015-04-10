@@ -14,10 +14,7 @@
   <body>
     <div class="container">
       <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-        </ul>
-        <span class="logo"></span>
+        <%= safe Skeleton4.NavigationTree.as_html_for_user_id( get_user_id( @conn ) ) %>
       </div>
 
       <%= @inner %>
