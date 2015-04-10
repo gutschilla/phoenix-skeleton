@@ -24,7 +24,8 @@ defmodule Skeleton4.Endpoint do
   plug Plug.Head
 
   plug Plug.Session,
-    store: :cookie,
+    store: :memcached,
+    table: :memcached_sessions,
     key: "_skeleton4_key",
     signing_salt: "FWKQ7dhO",
     encryption_salt: "x29Pp2vo"
