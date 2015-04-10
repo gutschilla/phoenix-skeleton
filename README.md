@@ -1,5 +1,7 @@
 # Phoenix-Sekeleton
 
+This version currently supports Phoenix v0.10.0 Current version of Phoenix is 0.11.0, now (by April 2015) and will be supported soon (by, well, soon)
+
 ## Feature Roadmap
 - [x] Basic routing
 - [x] Authentication
