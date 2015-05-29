@@ -2,6 +2,13 @@
 
 Master branch currently supports Phoenix v0.11.0
 
+# Coming soon!
+
+Yay! Nothing much happened here for the last few weeks. 
+
+- Next release will support phoenix 0.13.1 and integrate more nicely with brunch or webpack (still cannot decide on what to use).
+- Have navigation as Elixir Agent
+
 ## Feature Roadmap
 - [x] Basic routing
 - [x] Authentication
@@ -49,6 +56,5 @@ Master branch currently supports Phoenix v0.11.0
     - on Debuan/Ubuntu "deb.nodesource.com" works great
 3. Install bower dependecies with `bower install`
 2. Start Phoenix endpoint with `mix phoenix.server`
-
 
 Now you can visit `localhost:4000` from your browser.
