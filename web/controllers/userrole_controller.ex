@@ -1,10 +1,9 @@
-defmodule Skeleton4.UserroleController do
-  use Skeleton4.Web, :controller
+defmodule Skeleton.UserroleController do
+  use Skeleton.Web, :controller
 
-  alias Skeleton4.Userrole
+  alias Skeleton.Userrole
 
   plug :scrub_params, "userrole" when action in [:create, :update]
-  plug :action
 
   def index(conn, _params) do
     userroles = Repo.all(Userrole)

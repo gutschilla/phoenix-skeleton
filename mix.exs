@@ -1,8 +1,8 @@
-defmodule Skeleton4.Mixfile do
+defmodule Skeleton.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :skeleton4,
+    [app: :skeleton,
      version: "0.0.1",
      elixir: "~> 1.0",
      elixirc_paths: elixirc_paths(Mix.env),
@@ -17,14 +17,17 @@ defmodule Skeleton4.Mixfile do
   # Type `mix help compile.app` for more information
   def application do
     [
-      mod: {Skeleton4, []},
+      mod: {Skeleton, []},
       applications: [
         :phoenix, 
+        :phoenix_html, 
         :cowboy, 
-        :logger, 
-        :ecto,
-        :plug_session_memcached 
-      ]  
+        :logger,
+        :phoenix_ecto, 
+        :postgrex,
+        :plug_session_memcached,
+        :navigation_tree # from phoenix_skeleton_deps_umbrella
+      ]
     ]
   end
 
@@ -37,14 +40,16 @@ defmodule Skeleton4.Mixfile do
   # Type `mix help deps` for examples and options
   defp deps do
     [
-      {:phoenix, "~> 0.11"},
-      {:phoenix_ecto, "~> 0.3"},
+      {:phoenix, "~> 0.14"},
+      {:phoenix_ecto, "~> 0.5"},
       {:postgrex, ">= 0.0.0"},
-      {:phoenix_live_reload, "~> 0.3"},
+      {:phoenix_html, "~> 1.1"},
+      {:phoenix_live_reload, "~> 0.4", only: :dev},
       {:cowboy, "~> 1.0"},
-      {:plug_session_memcached, github: "gutschilla/plug-session-memcached", branch: "master" },
-      {:phoenix_skeleton_deps_umbrella, github: "gutschilla/phoenix_skeleton_deps_umbrella", branch: "master" },
-      {:misc_random, github: "gutschilla/elixir-helper-random", branch: "master" }
-    ]
+      {:phoenix_skeleton_deps_umbrella, github: "gutschilla/phoenix_skeleton_deps_umbrella", branch: "master"},
+      {:misc_random, github: "gutschilla/elixir-helper-random", branch: "master" },
+      {:mcd, github: "EchoTeam/mcd"}, # memcached driver
+      {:plug_session_memcached, "~> 0.2.0" }
+   ]
   end
 end

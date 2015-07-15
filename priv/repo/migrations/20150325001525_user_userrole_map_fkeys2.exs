@@ -1,4 +1,4 @@
-defmodule Skeleton4.Repo.Migrations.UserUserroleMapFkeys2 do
+defmodule Skeleton.Repo.Migrations.UserUserroleMapFkeys2 do
   use Ecto.Migration
 
   def up do

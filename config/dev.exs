@@ -6,7 +6,7 @@ use Mix.Config
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
-config :skeleton4, Skeleton4.Endpoint,
+config :skeleton, Skeleton.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -14,7 +14,7 @@ config :skeleton4, Skeleton4.Endpoint,
   watchers: [node: ["node_modules/brunch/bin/brunch", "watch"]]
 
 # Watch static and templates for browser reloading.
-config :skeleton4, Skeleton4.Endpoint,
+config :skeleton, Skeleton.Endpoint,
   live_reload: [
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif)$},
@@ -27,8 +27,10 @@ config :skeleton4, Skeleton4.Endpoint,
 config :logger, :console, format: "[$level] $message\n"
 
 # Configure your database
-config :skeleton4, Skeleton4.Repo,
+config :skeleton, Skeleton.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "skeleton4_user",
-  password: "skeleton4_pass",
-  database: "skeleton4"
+  username: "skeleton_dev_user",
+  password: "skeleton_dev_pass",
+  database: "skeleton_dev",
+  hostname: "192.168.0.240",
+  size: 10 # The amount of database connections in the pool

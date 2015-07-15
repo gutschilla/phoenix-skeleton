@@ -1,12 +1,12 @@
-defmodule Skeleton4.Web do
+defmodule Skeleton.Web do
   @moduledoc """
   A module that keeps using definitions for controllers,
   views and so on.
 
   This can be used in your application as:
 
-      use Skeleton4.Web, :controller
-      use Skeleton4.Web, :view
+      use Skeleton.Web, :controller
+      use Skeleton.Web, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -27,12 +27,12 @@ defmodule Skeleton4.Web do
       use Phoenix.Controller
 
       # Alias the data repository and import query/model functions
-      alias Skeleton4.Repo
+      alias Skeleton.Repo
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
 
       # Import URL helpers from the router
-      import Skeleton4.Router.Helpers
+      import Skeleton.Router.Helpers
     end
   end
 
@@ -41,13 +41,19 @@ defmodule Skeleton4.Web do
       use Phoenix.View, root: "web/templates"
 
       # Import convenience functions from controllers
-      import Phoenix.Controller, only: [get_flash: 2]
+      import Phoenix.Controller, only: [get_csrf_token: 0, get_flash: 2, view_module: 1]
 
       # Import URL helpers from the router
-      import Skeleton4.Router.Helpers
+      import Skeleton.Router.Helpers
 
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
+    end
+  end
+
+  def router do
+    quote do
+      use Phoenix.Router
     end
   end
 
@@ -56,7 +62,7 @@ defmodule Skeleton4.Web do
       use Phoenix.Channel
 
       # Alias the data repository and import query/model functions
-      alias Skeleton4.Repo
+      alias Skeleton.Repo
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
 

@@ -1,3 +1,3 @@
-defmodule Skeleton4.PageView do
-  use Skeleton4.Web, :view
+defmodule Skeleton.PageView do
+  use Skeleton.Web, :view
 end

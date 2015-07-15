@@ -1,4 +1,4 @@
-defmodule Skeleton4.Router do
+defmodule Skeleton.Router do
   use Phoenix.Router
 
   pipeline :browser do
@@ -12,7 +12,7 @@ defmodule Skeleton4.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", Skeleton4 do
+  scope "/", Skeleton do
     pipe_through :browser # Use the default browser stack
 
     get "/",      PageController, :index
@@ -22,7 +22,7 @@ defmodule Skeleton4.Router do
 
   end
 
-  scope "/auth", Skeleton4 do
+  scope "/auth", Skeleton do
     pipe_through :browser
     get  "/",       AuthController, :index
     post "/login",  AuthController, :login
@@ -30,7 +30,7 @@ defmodule Skeleton4.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Skeleton4 do
+  # scope "/api", Skeleton do
   #   pipe_through :api
   # end
 end

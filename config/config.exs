@@ -6,19 +6,19 @@
 use Mix.Config
 
 # Configures the endpoint
-config :skeleton4, Skeleton4.Endpoint,
+config :skeleton, Skeleton.Endpoint,
   url: [host: "localhost"],
-  root: Path.expand("..", __DIR__),
-  secret_key_base: "Xr16fZ4OwibbjqGi8gy8ectpRuGuPpECjCbG9ChpCfqE0W1Y3kJrDUmRNlWSFeQ3",
-  debug_errors: false,
-  pubsub: [name: Skeleton4.PubSub,
+  root: Path.dirname(__DIR__),
+  secret_key_base: "wzTwKg+PNLR7M595wCG9aNDXgD46hTbrKrS714zbjiL/Jh6CwLai1p5cHATxVeUE",
+  render_errors: [default_format: "html"],
+  pubsub: [name: Skeleton.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
-  
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

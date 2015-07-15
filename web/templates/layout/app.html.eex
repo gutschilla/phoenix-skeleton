@@ -5,28 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="gutschilla">
 
-    <title>Hello Phoenix!</title>
-    <!--<link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">-->
-    <link rel="stylesheet" href="<%= static_path(@conn, "/bower_components/bootstrap/dist/css/bootstrap.min.css") %>">
+    <title>Phoenix-Skeleton</title>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
   <body>
 
     <nav class="navbar navbar-default">
       <div class="container-fluid">
-        <%= safe Skeleton4.NavigationTree.as_html_for_user_id( get_user_id( @conn ) ) %>
+        <%= raw Skeleton.NavigationTree.as_html_for_user_id( get_user_id( @conn ) ) %>
       </div>
     </nav>
     
-    <div class="container-fluid">
+    <div class="container">
       <p class="alert alert-info"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger"><%= get_flash(@conn, :error) %></p>
       <%= @inner %>
     </div> <!-- /container -->
 
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>    
     <script>require("web/static/js/app")</script>
+    
   </body>
+
 </html>

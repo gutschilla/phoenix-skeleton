@@ -1,9 +1,9 @@
-defmodule Skeleton4.Userrole do
-  use Skeleton4.Web, :model
+defmodule Skeleton.Userrole do
+  use Skeleton.Web, :model
 
   schema "userroles" do
     field :name, :string
-    has_many  :user_userrole_maps, Skeleton4.UserUserroleMap
+    has_many  :user_userrole_maps, Skeleton.UserUserroleMap
   end
 
   @doc """

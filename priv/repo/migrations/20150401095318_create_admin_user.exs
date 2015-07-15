@@ -1,9 +1,9 @@
-defmodule Skeleton4.Repo.Migrations.CreateAdminUser do
+defmodule Skeleton.Repo.Migrations.CreateAdminUser do
   use Ecto.Migration
 
   def up do
     # password is "admin"
-    {salt, hash} =  Skeleton4.User.Helper.make_password_hash "admin"
+    {salt, hash} =  Skeleton.User.Helper.make_password_hash "admin"
     execute """
       INSERT INTO users ( id, username, password_hash, salt )
       VALUES ( 1, 'admin', '#{hash}', '#{salt}' );

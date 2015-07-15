@@ -1,11 +1,11 @@
-defmodule Skeleton4.UserUserroleMap do
-  use Skeleton4.Web, :model
+defmodule Skeleton.UserUserroleMap do
+  use Skeleton.Web, :model
 
   @primary_key false
 
   schema "user_userrole_maps" do
-      belongs_to :user,     Skeleton4.User,     foreign_key: :user_id,      references: :id
-      belongs_to :userrole, Skeleton4.Userrole, foreign_key: :userrole_id,  references: :id
+      belongs_to :user,     Skeleton.User,     foreign_key: :user_id,      references: :id
+      belongs_to :userrole, Skeleton.Userrole, foreign_key: :userrole_id,  references: :id
   end
 
   @doc """

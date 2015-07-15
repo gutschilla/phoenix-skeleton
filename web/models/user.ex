@@ -1,12 +1,12 @@
-defmodule Skeleton4.User do
-  use Skeleton4.Web, :model
+defmodule Skeleton.User do
+  use Skeleton.Web, :model
 
   schema "users" do
     field :username,      :string
     field :password_hash, :string
     field :salt,          :string
 
-    has_many :user_userrole_maps, Skeleton4.UserUserroleMap, foreign_key: :user_id
+    has_many :user_userrole_maps, Skeleton.UserUserroleMap, foreign_key: :user_id
     
     has_many :userroles, through: [ :user_userrole_maps, :userrole ]
     
@@ -26,33 +26,33 @@ defmodule Skeleton4.User do
 
 end
 
-defmodule Skeleton4.User.Helper do
+defmodule Skeleton.User.Helper do
   import Ecto.Query
   
   def roles_query_2( u ) do
-    from user in Skeleton4.User,
+    from user in Skeleton.User,
       where: user.id == ^u.id,
       preload: [:user_userrole_maps, user_userrole_maps: :userrole]
   end
   
   def roles_of_2( u ) do
-    [ user ] = Skeleton4.Repo.all roles_query_2( u )
+    [ user ] = Skeleton.Repo.all roles_query_2( u )
     Enum.map( user.user_userrole_maps, fn(map) -> map.userrole.name end )
   end
 
   def roles_query_1( u ) do
-    from user in Skeleton4.User,      
+    from user in Skeleton.User,      
       where: user.id == ^u.id,
       preload: [:userroles ]
   end
 
   def roles_of_1( user ) do
-    [ user ] = Skeleton4.Repo.all roles_query_1( user )
+    [ user ] = Skeleton.Repo.all roles_query_1( user )
     Enum.map user.userroles, fn( userrole) -> userrole.name end
   end
 
   def roles_query_0( p_user ) do
-    Skeleton4.Userrole
+    Skeleton.Userrole
     |> Ecto.Query.join( :inner, [ role ],      map  in assoc( role, :user_userrole_maps ) )
     |> Ecto.Query.join( :inner, [ role, map ], user in assoc( map,  :user ) )
     |> Ecto.Query.where( [role, map, user], user.id == ^p_user.id )
@@ -60,7 +60,7 @@ defmodule Skeleton4.User.Helper do
   end
 
   def roles_of_0( p_user ) do
-    Skeleton4.Repo.all roles_query_0( p_user )
+    Skeleton.Repo.all roles_query_0( p_user )
   end
 
   @doc """
@@ -78,10 +78,10 @@ defmodule Skeleton4.User.Helper do
   def roles_of( user ) do roles_of_0( user ) end
 
   def get_by_username( username ) do
-    query = Skeleton4.User
+    query = Skeleton.User
     |> Ecto.Query.where( [user], user.username == ^username )
     |> Ecto.Query.limit( [user], 1 )
-    Skeleton4.Repo.all( query ) |> List.first
+    Skeleton.Repo.all( query ) |> List.first
   end
 
   def make_password_hash( password ) do
@@ -112,7 +112,7 @@ defmodule Skeleton4.User.Helper do
   Generates a random salt and sets the password_hash accordingly
   """  
   
-  @spec set_password( user::Skeleton4.User.t, password::String.t ) :: Skeleton4.User.t
+  @spec set_password( user::Skeleton.User.t, password::String.t ) :: Skeleton.User.t
 
   def set_password( user, password  ) do
     { salt, hash } = make_password_hash( password )

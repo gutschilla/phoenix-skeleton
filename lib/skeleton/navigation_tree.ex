@@ -1,4 +1,4 @@
-defmodule Skeleton4.NavigationTree do
+defmodule Skeleton.NavigationTree do
 
   # TODO: auto-gerenerate this as macro instead of having this boilerplate code
 
@@ -49,7 +49,7 @@ defmodule Skeleton4.NavigationTree do
   end
 
   def allowed_for_user_id( user_id ) do
-    roles = Skeleton4.User.Helper.roles_of( Skeleton4.Repo.get Skeleton4.User, user_id )
+    roles = Skeleton.User.Helper.roles_of( Skeleton.Repo.get Skeleton.User, user_id )
     allowed_tree roles
   end
 
@@ -60,7 +60,7 @@ defmodule Skeleton4.NavigationTree do
 
   def as_html( item ) when is_map( item) do
     case item do
-        %{ ul_start: true } -> ~s(<ul class=\"#{ Enum.join( item.classes, " " ) }\">)
+        %{ ul_start: true } -> ~s(<ul tralls="dkjfhsdklfhsdkljfhsdkljh" class=\"#{ Enum.join( item.classes, " " ) }\">)
         %{ anchor:   true } -> ~s(<a href="#{ item.href }">#{ item.text }</a>)
         %{ li_start: true } -> ~s(<li class=\"#{ Enum.join( item.classes, " " ) }\">)
         %{ ul_stop:  true } -> ~s(</ul>)

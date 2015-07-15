@@ -1,4 +1,4 @@
-defmodule Skeleton4.Repo.Migrations.UserUserroleMap do
+defmodule Skeleton.Repo.Migrations.UserUserroleMap do
   use Ecto.Migration
 
   def change do

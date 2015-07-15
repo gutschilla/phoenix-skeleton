@@ -1,5 +1,5 @@
-defmodule Skeleton4.LayoutView do
-  use Skeleton4.Web, :view
+defmodule Skeleton.LayoutView do
+  use Skeleton.Web, :view
 
   def get_session( conn, atom ) do
     Plug.Conn.get_session(conn, atom )

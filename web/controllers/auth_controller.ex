@@ -1,17 +1,15 @@
-defmodule Skeleton4.AuthController do
-  use Skeleton4.Web, :controller
-  alias Skeleton4.Router.Helpers
+defmodule Skeleton.AuthController do
+  use Skeleton.Web, :controller
+  alias Skeleton.Router.Helpers
 
-  plug :action
-
-  @path_to_index Skeleton4.Router.Helpers.auth_path( Skeleton4.Endpoint, :index )
+  @path_to_index Skeleton.Router.Helpers.auth_path( Skeleton.Endpoint, :index )
 
   def index(conn, _params) do
     render conn, "index.html"
   end
   
   def login( conn, %{ "username" => username, "password" => password } ) do
-    user = Skeleton4.User.Helper.get_by_username username
+    user = Skeleton.User.Helper.get_by_username username
     verify_password( conn, user, password )
   end
 
@@ -30,7 +28,7 @@ defmodule Skeleton4.AuthController do
 
   def verify_password( conn, user, password ) do
     # check user's password
-    result = Skeleton4.User.Helper.verify_password user, password
+    result = Skeleton.User.Helper.verify_password user, password
  
     if result do
         conn = put_flash( conn, :login_success, true )

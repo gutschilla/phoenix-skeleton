@@ -1,4 +1,4 @@
-defmodule :"Elixir.Skeleton4.Repo.Migrations.Create-users-table" do
+defmodule :"Elixir.Skeleton.Repo.Migrations.Create-users-table" do
   use Ecto.Migration
 
   def change do

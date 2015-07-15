@@ -10,7 +10,10 @@ erl_crash.dump
 /node_modules
 
 # bower-installed stuff
-/priv/static/bower_components
+/bower_components
+
+# for real products, uncomment this:
+# /config/prod.secret.exs
 
 # Since we are building js and css from web/static,
 # we ignore priv/static/{css,js}. You may want to
@@ -18,3 +21,8 @@ erl_crash.dump
 /priv/static/css
 /priv/static/js
 
+# used by brunch/sass
+/web/static/css/.sass-cache/
+
+# When I use Komodo IDE
+/phoenix-skeleton.komodoproject

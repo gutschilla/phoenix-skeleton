@@ -1,34 +1,16 @@
-<div class="jumbotron">
-  <h2>Welcome to Phoenix!</h2>
-  <p class="lead">Phoenix is an Elixir Web Framework targeting full-featured, fault tolerant applications with realtime functionality.</p>
+<div>
+  <h1>Welcome to Phoenix-Skeleton!</h1>
+  <p class="lead">
+    This project tries to integrate a few things for Eleixir/Phoenix.
+  </p>
+  <ul>
+    <li>Session handling (possibly in a memcached-Store)</li>
+    <li>Users, Userroles in a database</li>
+    <li>Authentication of users</li>
+    <li>Admin section [to be done]</li>
+  </ul>
+  <h2>Where to start?</h2>
+  <p>
+    Login here: <a href="/auth">/auth</a> (user: admin, pass: admin)
+  </p>
 </div>
-
-<div class="row marketing">
-  <div class="col-lg-6">
-    <h4>Resources</h4>
-    <ul>
-      <li>
-        <a href="http://hexdocs.pm/phoenix">Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-    </ul>
-  </div>
-
-  <div class="col-lg-6">
-    <h4>Help</h4>
-    <ul>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix/issues?state=open">Issues</a>
-      </li>
-      <li>
-        <a href="irc://irc.freenode.net/elixir-lang">#elixir-lang on freenode IRC</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/chris_mccord">@chris_mccord</a>
-      </li>
-    </ul>
-  </div>
-</div>
-
