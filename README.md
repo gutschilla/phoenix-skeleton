@@ -56,14 +56,14 @@ Now you can visit `localhost:4000` from your browser.
 # System dependencies
 
 - Erlang/Elixir, of course ;-)
-- PostgreSQL (tests run on 9.4, but 9.x shoulb be OK)
-    - see config/dev.exs for host/user/port settings
+- PostgreSQL (tests run on 9.4)
+    - see config/dev.exs for host/user/port settings (CAUTION: dev host is set to 192.168.0.240, this will fail on your machine, set to locahost!)
 - memcached
     - assumed to run on 127.0.0.1:11211
 - npm package manager
     - tested with 1.4.28
 - bower package manager
-    - tested with 1.3.12
+    - tested with 1.4.1
 
 ## Create development database
 
