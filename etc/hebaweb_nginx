@@ -1,0 +1,49 @@
+upstream hebaweb_backend {
+	server 127.0.0.1:4001;
+	server 127.0.0.1:9000 backup; # this will show an error page
+}
+
+server {
+	listen 80;
+	listen [::]:80;
+	server_name www.hebaweb.de;
+	rewrite ^ https://hebaweb.de$request_uri permanent;
+}
+
+server {
+    server_name hebaweb.de;
+
+	listen 80;
+	listen 443;
+	listen [::]:80;
+	listen [::]:443;
+
+    ssl on;
+    ssl_certificate     /var/www-apps/hebaweb/res/hebaweb_combined.crt;
+    ssl_certificate_key /var/www-apps/hebaweb/res/hebaweb.key;
+
+    # raise the default 1m upload maximum 
+    client_max_body_size 10m;
+
+    location / {
+		# enforce SSL
+		if ( $scheme != https ){
+			rewrite ^ https://hebaweb.de$request_uri permanent;
+		}
+		# PROXY CONFIG
+		proxy_pass http://hebaweb_backend;
+		proxy_set_header Host            $host;
+		proxy_set_header X-Real-IP       $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	}
+ 
+	location /js {
+		root /var/www-apps/hebaweb/priv/static/;
+	}
+	location /css {
+		root /var/www-apps/hebaweb/priv/static/;
+	}
+	location /images {
+		root /var/www-apps/hebaweb/priv/static/;
+	}
+}

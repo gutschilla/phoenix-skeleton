@@ -1,0 +1,13 @@
+[Unit]
+Description=phoenix-skeleton_backend service
+After=postgresql.service memcached.service
+
+[Service]
+Type=forking
+WorkingDirectory=/var/www-apps/phoenix-skeleton
+ExecStartPre=/bin/bash /var/www-apps/phoenix-skeleton/etc/pre-start.sh
+ExecStart=/sbin/start-stop-daemon --start --user phoenix-phoenix-skeleton --chuid phoenix-phoenix-skeleton --verbose          --startas /var/www-apps/phoenix-skeleton/rel/phoenix-skeleton/bin/phoenix-skeleton -- start
+ExecStop=/sbin/start-stop-daemon  --stop  --user phoenix-phoenix-skeleton --chuid phoenix-phoenix-skeleton --verbose --oknodo --startas /var/www-apps/phoenix-skeleton/rel/phoenix-skeleton/bin/phoenix-skeleton -- stop
+
+[Install]
+WantedBy=multi-user.target
