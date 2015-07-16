@@ -2,17 +2,18 @@
 
 Master branch currently supports Phoenix v0.14.0
 
-# What's new in 0.14.0?
+# What's new in 0.14?
 
 - Support fort phoenix 0.14 
 - integrate brunch to handle assets
 - improved documentation: added Postgre commands for fast setup of development database
 - deployment guide: systemd files, running skeleton app as unprivileged user
 - return to old "Skeleton" namespace for everything.
+- navigation tree is a macro for shorter config, now
 
-# Coming Soon!
+# Coming Soon! Not yet documented
 
-- Have navigation as Elixir Agent (current implementation is way too quick'n'dirty.
+- deployment scripts (systemd service files and nginx conf)
 
 ## Feature Roadmap
 - [x] Basic routing
