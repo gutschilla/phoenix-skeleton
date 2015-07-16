@@ -26,7 +26,6 @@ defmodule Skeleton.Mixfile do
         :phoenix_ecto, 
         :postgrex,
         :plug_session_memcached,
-        :navigation_tree # from phoenix_skeleton_deps_umbrella
       ]
     ]
   end
@@ -46,10 +45,11 @@ defmodule Skeleton.Mixfile do
       {:phoenix_html, "~> 1.1"},
       {:phoenix_live_reload, "~> 0.4", only: :dev},
       {:cowboy, "~> 1.0"},
-      {:phoenix_skeleton_deps_umbrella, github: "gutschilla/phoenix_skeleton_deps_umbrella", branch: "master"},
+      {:navigation_tree, ">=0.1.1"},
       {:misc_random, github: "gutschilla/elixir-helper-random", branch: "master" },
       {:mcd, github: "EchoTeam/mcd"}, # memcached driver
-      {:plug_session_memcached, "~> 0.2.0" }
+      {:plug_session_memcached, "~> 0.2.0" },
+      {:exrm, ">=0.18.5"}
    ]
   end
 end
