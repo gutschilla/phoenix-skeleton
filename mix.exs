@@ -3,7 +3,7 @@ defmodule Skeleton.Mixfile do
 
   def project do
     [app: :skeleton,
-     version: "0.0.1",
+     version: "0.14.1",
      elixir: "~> 1.0",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix] ++ Mix.compilers,
