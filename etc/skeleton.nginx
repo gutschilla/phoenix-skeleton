@@ -1,0 +1,49 @@
+upstream skeleton_backend {
+	server 127.0.0.1:4001;
+	# server 127.0.0.1:9000 backup; # this will show an error page
+}
+
+server {
+	listen 80;
+	listen [::]:80;
+	server_name www.phoenix-skeleton.net;
+	rewrite ^ https://phoenix-skeleton.net$request_uri permanent;
+}
+
+server {
+    server_name phoenix-skeleton.net;
+
+	listen 80;
+	listen [::]:80;
+
+    # <SSL> # remove this section if you don't need ssl (not recommended)
+	listen 443;
+	listen [::]:443;
+    ssl on;
+    ssl_certificate     /var/www-apps/phoenix-skeleton/res/skeleton.crt; 
+    ssl_certificate_key /var/www-apps/phoenix-skeleton/res/skeleton.key;
+    # </SSL>
+
+    # raise the default 1m upload maximum 
+    client_max_body_size 10m;
+
+    location / {
+		# PROXY CONFIG
+		proxy_pass http://skeleton_backend;
+		proxy_set_header Host             $host;
+		proxy_set_header X-Forwarded-Host $http_host;
+		proxy_set_header X-Real-IP        $remote_addr;
+		proxy_set_header X-Forwarded-For  $proxy_add_x_forwarded_for;
+		proxy_set_header X-Forwarded-Port $server_port;
+	}
+ 
+	location /js {
+		root /var/www-apps/skeleton/priv/static/;
+	}
+	location /css {
+		root /var/www-apps/skeleton/priv/static/;
+	}
+	location /images {
+		root /var/www-apps/skeleton/priv/static/;
+	}
+}
