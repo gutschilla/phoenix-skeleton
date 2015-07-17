@@ -82,6 +82,45 @@ CREATE DATABASE skeleton_dev
        LC_CTYPE = 'de_DE.UTF-8'
        CONNECTION LIMIT = -1;
 ```
+# Deployment
+
+Hot code relaod is not covered here. Be sure to meet system dependencies.
+
+## simple (pack, copy, run)
+
+- run `bash etc/compile_release.sh`
+- copy `rel/skeleton/releases/<version>/skeleton.tar.gz` to your production machine
+- extract, then run `bin/skeleton --start` or `bin/skeleton --console` (if you want and iex shell)
+
+## my favourite (clone, pack, run-as-service)
+
+This assumes a linux production machine with systemd as init system and a bash shell. Something like Debian 8 or Ubuntu 15.04 (these both are tested).
+
+### install
+I am used to put these things into `/var/www-apps/<project-name>`. Scripts and configs in ./etc are tuned to this.
+```
+cd /var/www-apps
+git clone https://github.com/gutschilla/phoenix-skeleton.git
+cd phoenix-skeleton
+bash etc/compile_release.sh
+npm install
+bower install
+systemctl enable /var/www-apps/phoenix-skeleton/etc/phoenix_skeleton_backend.service
+systemctl start phoenix_skeleton_backend.service
+cd /etc/nginx/sites-available
+ln -s /var/www-apps/phoenix-skeleton/etc/skeleton.nginx skeleton
+cd /etc/nginx/sites-enabled
+ln -s /etc/nginx/sites-available/skeleton
+systemctl nginx reload
+```
+
+### upgrade to current master
+```
+cd /var/www-apps/phoenix-skeleton
+git pull
+bash etc/compile-release.sh
+systemctl restart phoenix_skeleton_backend.service
+```
 
 # Feedback
 
