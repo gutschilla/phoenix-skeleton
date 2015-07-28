@@ -8,9 +8,10 @@ Master branch currently supports Phoenix v0.14.0
 - track vhanges in `CHANGES.md`. Wohoo ;-)
 - basic roles authorizotion in Admin controller
 
-# undocumented
+## coming up next
 
-- deployment scripts (systemd service files and nginx conf)
+- move Plug.Authorization.Roles into an external dependency, make it configurable from NavigationTree
+- documentation for deployment scripts (systemd service files and nginx conf)
 
 ## Feature Roadmap
 - [x] Basic routing
