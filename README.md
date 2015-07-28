@@ -93,9 +93,9 @@ Hot code relaod is not covered here. Be sure to meet system dependencies.
 - extract, then run `bin/skeleton --start` or `bin/skeleton --console` (if you want and iex shell)
 
 ## my favourite (clone, pack, run-as-service)
-
 This assumes a linux production machine with systemd as init system and a bash shell. Something like Debian 8 or Ubuntu 15.04 (these both are tested).
 
+=======
 ### install
 I am used to put these things into `/var/www-apps/<project-name>`. Scripts and configs in ./etc are tuned to this.
 ```
