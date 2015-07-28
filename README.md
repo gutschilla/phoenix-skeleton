@@ -1,10 +1,10 @@
 # Phoenix-Sekeleton
 
-Master branch currently supports Phoenix v0.14.0
+Master branch currently supports Phoenix v0.15.0
 
-## What's new in 0.15?
+## What's new in v0.15.3?
 
-- support for phoenix 0.15
+- support for phoenix 0.15.0
 - track vhanges in `CHANGES.md`. Wohoo ;-)
 - basic roles authorizotion in Admin controller
 
