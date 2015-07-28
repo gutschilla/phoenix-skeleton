@@ -29,6 +29,11 @@ defmodule Skeleton.Router do
     post "/logout", AuthController, :logout
   end
 
+  scope "/admin", Skeleton do
+    pipe_through :browser
+    get "/", AdminController, :index
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", Skeleton do
   #   pipe_through :api

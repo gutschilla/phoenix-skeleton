@@ -30,7 +30,8 @@ defmodule Skeleton.Endpoint do
 
   plug Plug.Session,
     key: "_skeleton_key",
-    # store: :cookie,
+    #store: :cookie,
+    #signing_salt: "SBRvpcSC"
     store: :memcached,
     table: :memcached_sessions
 
