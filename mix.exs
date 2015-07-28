@@ -39,7 +39,7 @@ defmodule Skeleton.Mixfile do
   # Type `mix help deps` for examples and options
   defp deps do
     [
-      {:phoenix, "~> 0.14"},
+      {:phoenix, "~> 0.15"},
       {:phoenix_ecto, "~> 0.5"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 1.1"},
