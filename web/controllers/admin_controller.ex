@@ -1,7 +1,7 @@
 defmodule Skeleton.AdminController do
   use Skeleton.Web, :controller
 
-  plug Plug.AuthorizationRoles,
+  plug Plug.Authorization.Roles,
     required: ["admin"]
 
   def index( conn, _params ) do
