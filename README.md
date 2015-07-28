@@ -8,7 +8,7 @@ Master branch currently supports Phoenix v0.14.0
 - track vhanges in `CHANGES.md`. Wohoo ;-)
 - basic roles authorizotion in Admin controller
 
-# Coming Soon! Not yet documented
+# undocumented
 
 - deployment scripts (systemd service files and nginx conf)
 
@@ -82,6 +82,11 @@ CREATE DATABASE skeleton_dev
 # Deployment
 
 Hot code relaod is not covered here. Be sure to meet system dependencies.
+
+## Known deployment issues
+
+- For some reason, using this thingy with the memcached session plug does not work as a `mix release` production release. 
+  Startup with `MIX_ENV=prod mix phoenix.server` is fine, though. A workaround is to either use this method or resort to Cookie-based session storage.
 
 ## simple (pack, copy, run)
 
