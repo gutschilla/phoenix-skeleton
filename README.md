@@ -2,14 +2,11 @@
 
 Master branch currently supports Phoenix v0.14.0
 
-# What's new in 0.14?
+## What's new in 0.15?
 
-- Support fort phoenix 0.14 
-- integrate brunch to handle assets
-- improved documentation: added Postgre commands for fast setup of development database
-- deployment guide: systemd files, running skeleton app as unprivileged user
-- return to old "Skeleton" namespace for everything.
-- navigation tree is a macro for shorter config, now
+- support for phoenix 0.15
+- track vhanges in `CHANGES.md`. Wohoo ;-)
+- basic roles authorizotion in Admin controller
 
 # Coming Soon! Not yet documented
 
@@ -23,8 +20,8 @@ Master branch currently supports Phoenix v0.14.0
     - [x] basic Login page
 - [x] Authorization
     - [x] Userroles Ecto defintion 
-    - [x] Skeleton.Helper.roles_of( user ) returns string_
-    - [ ] Means to check for roles in controllers/actions
+    - [x] Skeleton.Helper.roles_of( user ) returns string
+    - [x] Means to check for roles in controllers/actions
 - [x] Memcached Session store
     - this is done via the plug gutschilla/plug-session-memcached
     - [ ] make Memcached host/port configurable
