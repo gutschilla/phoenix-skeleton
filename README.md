@@ -113,6 +113,8 @@ cd phoenix-skeleton
 bash etc/compile_release.sh
 npm install
 bower install
+brunch build
+mix ecto.migrate
 systemctl enable /var/www-apps/phoenix-skeleton/etc/phoenix_skeleton_backend.service
 systemctl start phoenix_skeleton_backend.service
 cd /etc/nginx/sites-available
