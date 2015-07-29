@@ -78,8 +78,13 @@ CREATE DATABASE skeleton_dev
        TABLESPACE = pg_default
        LC_COLLATE = 'de_DE.UTF-8'
        LC_CTYPE = 'de_DE.UTF-8'
-       CONNECTION LIMIT = -1;
+       CONNECTION LIMIT = -1
+       TEMPLATE = template0
+      ;
 ```
+_Hint_: You may need to adjust de_DE.UTF-8 to your needs and use this Gist:
+(https://gist.github.com/ffmike/877447)
+
 # Deployment
 
 Hot code relaod is not covered here. Be sure to meet system dependencies.
@@ -108,6 +113,8 @@ cd phoenix-skeleton
 bash etc/compile_release.sh
 npm install
 bower install
+brunch build
+mix ecto.migrate
 systemctl enable /var/www-apps/phoenix-skeleton/etc/phoenix_skeleton_backend.service
 systemctl start phoenix_skeleton_backend.service
 cd /etc/nginx/sites-available
