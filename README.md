@@ -2,11 +2,14 @@
 
 Master branch currently supports Phoenix v0.15.0
 
-## What's new in v0.15.3?
+## What's new in v0.15.4?
 
-- support for phoenix 0.15.0
-- track vhanges in `CHANGES.md`. Wohoo ;-)
-- basic roles authorizotion in Admin controller
+ - Rewrite Plug.Authorization.Roles to consume different configs
+ - Add protocol Plug.Authorization.Roles.Config to allow various configurations on how 
+   Plug.Authorization.Roles shall determine which roles are requiresd and how roles are 
+   extracted from the current connection. 
+   
+   TODO: externalize this as dependency, document it, make fancy blogpost.
 
 ## coming up next
 

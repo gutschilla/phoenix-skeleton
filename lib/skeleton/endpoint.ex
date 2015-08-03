@@ -30,10 +30,10 @@ defmodule Skeleton.Endpoint do
 
   plug Plug.Session,
     key: "_skeleton_key",
-    #store: :cookie,
-    #signing_salt: "SBRvpcSC"
-    store: :memcached,
-    table: :memcached_sessions
+    store: :cookie,
+    signing_salt: "SBRvpcSC"
+    # store: :memcached,
+    # table: :memcached_sessions
 
   plug Skeleton.Router
 end
