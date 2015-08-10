@@ -4,7 +4,7 @@ defmodule Skeleton.Mixfile do
   def project do
     [
       app: :skeleton,
-      version: "0.15.4",
+      version: "0.15.5",
       elixir: "~> 1.0",
       elixirc_paths: elixirc_paths(Mix.env),
       compilers: [:phoenix] ++ Mix.compilers,
@@ -47,7 +47,7 @@ defmodule Skeleton.Mixfile do
       {:phoenix_html, "~> 1.4"},
       {:phoenix_live_reload, "~> 0.5", only: :dev},
       {:cowboy, "~> 1.0"},
-      {:navigation_tree, ">=0.3.1"},
+      {:navigation_tree, ">=0.3.2"},
       {:misc_random, github: "gutschilla/elixir-helper-random", branch: "master" },
       {:mcd, github: "EchoTeam/mcd"}, # memcached driver
       {:plug_session_memcached, ">= 0.2.6" },
