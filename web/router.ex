@@ -36,7 +36,8 @@ defmodule Skeleton.Router do
   scope "/admin", Skeleton do
     pipe_through :browser
     pipe_through :admin
-    get "/", AdminController, :index
+    get "/roles", AdminController, :roles
+    get "/users", AdminController, :users
   end
 
   # Other scopes may use custom stacks.

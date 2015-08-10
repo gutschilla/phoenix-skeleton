@@ -4,7 +4,10 @@ defmodule Skeleton.AdminController do
   # plug Plug.Authorization.Roles,
   #  %Skeleton.Authorization{ required: ["admin"] }
 
-  def index( conn, _params ) do
+  def users( conn, _params ) do
+    send_resp( conn, 200, "Allowed" ) 
+  end
+  def roles( conn, _params ) do
     send_resp( conn, 200, "Allowed" ) 
   end
 
