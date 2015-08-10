@@ -5,10 +5,11 @@ defmodule Skeleton.Navigation do
   def config do
     %Node{
         name: "Home",
+        url: "/",
         children: [
             %Node{
                 name: "Login",
-                url:  "/auth",
+                controller: "auth",
             },
             %Node{
                 name: "Admin",
