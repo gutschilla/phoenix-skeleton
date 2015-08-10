@@ -15,7 +15,7 @@
 
     <nav class="navbar navbar-default">
       <div class="container-fluid">
-        <%= raw Skeleton.Navigation.Tree.as_html_for( get_user_id( @conn ) ) %>
+        <%= raw NavigationTree.Agent.as_html( get_user_roles( @conn ), :bootstrap ) %>
       </div>
     </nav>
     

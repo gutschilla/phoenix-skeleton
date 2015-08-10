@@ -1,5 +1,6 @@
 defmodule Skeleton do
   use Application
+  alias NavigationTree.Node, as: Node
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
   # for more information on OTP Applications
@@ -13,6 +14,7 @@ defmodule Skeleton do
       worker(Skeleton.Repo, []),
       # Here you could define other workers and supervisors as children
       # worker(Skeleton.Worker, [arg1, arg2, arg3]),
+      worker( NavigationTree.Agent, [Skeleton.Navigation.config ] )
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

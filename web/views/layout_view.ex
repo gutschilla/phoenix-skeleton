@@ -5,11 +5,21 @@ defmodule Skeleton.LayoutView do
     Plug.Conn.get_session(conn, atom )
   end
 
+  defp get_user( conn ) do
+    get_session( conn, :user )
+  end
+
   def get_user_id( conn ) do
-    user = get_session( conn, :user )
-    case user do
+    case get_user( conn ) do
       nil -> nil
-      %{ id: _id } -> user.id
+      %{ id: id } -> %{ id: id }
+    end
+  end
+
+  def get_user_roles( conn ) do
+    case get_user( conn ) do
+      nil         -> []
+      %{ id: id } -> Skeleton.User.Helper.roles_of( %{ id: id } ) 
     end
   end
 
