@@ -2,14 +2,10 @@
 
 Master branch currently supports Phoenix v0.15.0
 
-## What's new in v0.15.4?
+## What's new in v0.15.5?
 
- - Rewrite Plug.Authorization.Roles to consume different configs
- - Add protocol Plug.Authorization.Roles.Config to allow various configurations on how 
-   Plug.Authorization.Roles shall determine which roles are requiresd and how roles are 
-   extracted from the current connection. 
-   
-   TODO: externalize this as dependency, document it, make fancy blogpost.
+ - require navigation_tree 0.3.2 to have NavigationTree.Agent and many bugfixes from there
+ - split Plug.Authorization.Roles into different modules to prepare for externalization
 
 ## coming up next
 

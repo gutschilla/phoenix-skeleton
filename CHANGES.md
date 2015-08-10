@@ -1,5 +1,10 @@
 # CHANGES
 
+## v0.15.5
+
+ - require navigation_tree 0.3.2 to have NavigationTree.Agent and many bugfixes from there
+ - split Plug.Authorization.Roles into different modules to prepare for externalization
+
 ## v0.15.4
 
  - Rewrite Plug.Authorization.Roles to consume different configs
