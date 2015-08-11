@@ -14,11 +14,11 @@ defmodule Plug.Authorization.Roles do
     roles_of_user  = Config.get_userroles( opts ).( conn )
     roles_required = Config.required( opts )
     
-    { is_authorized, missing } = check_authorized( conn, roles_of_user, roles_required )
+    { is_authorized, missing } = check_authorized( roles_of_user, roles_required )
     assert_authorized conn, is_authorized, missing
   end
 
-  def check_authorized( conn, roles_of_user, roles_required ) do
+  def check_authorized( roles_of_user, roles_required ) do
     missing = Set.difference(
       Enum.into( roles_required, HashSet.new ), 
       Enum.into( roles_of_user,  HashSet.new )
