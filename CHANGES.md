@@ -1,5 +1,12 @@
 # CHANGES
 
+## What's new in v0.16.0?
+
+- Upgrade project to support Phoenix v0.16.1
+- Temporarily drop memcached-saved sessions, using default cookie-store until I get it to work with exrm
+- Finally include a _working_ brunch config (no need for links from bower_components to web/static any more)
+- move roadmap to ROADMAP.md
+
 ## v0.15.5
 
  - require navigation_tree 0.3.2 to have NavigationTree.Agent and many bugfixes from there

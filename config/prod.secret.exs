@@ -20,4 +20,4 @@ config :skeleton, Skeleton.Repo,
   password: "skeleton_dev_pass",
   database: "skeleton_dev",
   hostname: "192.168.0.240",
-  size: 20 # The amount of database connections in the pool
+  pool_size: 20 # The amount of database connections in the pool

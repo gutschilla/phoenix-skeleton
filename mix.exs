@@ -2,16 +2,14 @@ defmodule Skeleton.Mixfile do
   use Mix.Project
 
   def project do
-    [
-      app: :skeleton,
-      version: "0.15.5",
-      elixir: "~> 1.0",
-      elixirc_paths: elixirc_paths(Mix.env),
-      compilers: [:phoenix] ++ Mix.compilers,
-      build_embedded: Mix.env == :prod,
-      start_permanent: Mix.env == :prod,
-      deps: deps
-    ]
+    [app: :skeleton,
+     version: "0.16.0",
+     elixir: "~> 1.0",
+     elixirc_paths: elixirc_paths(Mix.env),
+     compilers: [:phoenix] ++ Mix.compilers,
+     build_embedded: Mix.env == :prod,
+     start_permanent: Mix.env == :prod,
+     deps: deps]
   end
 
   # Configuration for the OTP application
@@ -26,8 +24,7 @@ defmodule Skeleton.Mixfile do
         :cowboy, 
         :logger,
         :phoenix_ecto, 
-        :postgrex,
-        :plug_session_memcached,
+        :postgrex
       ]
     ]
   end
@@ -41,16 +38,14 @@ defmodule Skeleton.Mixfile do
   # Type `mix help deps` for examples and options
   defp deps do
     [
-      {:phoenix, "~> 0.15"},
-      {:phoenix_ecto, "~> 0.8"},
+      {:phoenix, "~> 0.16"},
+      {:phoenix_ecto, "~> 0.9"},
       {:postgrex, ">= 0.0.0"},
-      {:phoenix_html, "~> 1.4"},
-      {:phoenix_live_reload, "~> 0.5", only: :dev},
+      {:phoenix_html, "~> 2.0"},
+      {:phoenix_live_reload, "~> 0.6", only: :dev},
       {:cowboy, "~> 1.0"},
       {:navigation_tree, ">=0.3.2"},
       {:misc_random, github: "gutschilla/elixir-helper-random", branch: "master" },
-      {:mcd, github: "EchoTeam/mcd"}, # memcached driver
-      {:plug_session_memcached, ">= 0.2.6" },
       {:exrm, ">=0.18.5"}
    ]
   end

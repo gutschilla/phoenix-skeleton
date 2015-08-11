@@ -15,5 +15,4 @@ config :skeleton, Skeleton.Repo,
   username: "postgres",
   password: "postgres",
   database: "skeleton_test",
-  pool: Ecto.Adapters.SQL.Sandbox, # Use a sandbox for transactional testing
-  size: 1
+  pool: Ecto.Adapters.SQL.Sandbox

@@ -11,7 +11,7 @@ config :skeleton, Skeleton.Endpoint,
   debug_errors: true,
   code_reloader: true,
   cache_static_lookup: false,
-  watchers: [node: ["node_modules/brunch/bin/brunch", "watch"]]
+  watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin"]]
 
 # Watch static and templates for browser reloading.
 config :skeleton, Skeleton.Endpoint,
@@ -33,4 +33,4 @@ config :skeleton, Skeleton.Repo,
   password: "skeleton_dev_pass",
   database: "skeleton_dev",
   hostname: "127.0.0.1",
-  size: 10 # The amount of database connections in the pool
+  pool_size: 10 # The amount of database connections in the pool
