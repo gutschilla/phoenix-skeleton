@@ -1,27 +1,20 @@
 {
-  "name": "phoenix-skeleton4",
-  "private": true,
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "components"
-  ],
-  "version": "0.14.0",
+  "name": "Phoenix-Skeleton",
+  "version": "0.15.6",
   "authors": [
     "Martin Gutsch <gutsch@zwoelf.net>"
   ],
-  "description": "Phoenix Skeleton App",
-  "keywords": [
-    "erlang",
-    "elixir",
-    "phoenix",
-    "skeleton",
-    "authentication",
-    "postgre"
-  ],
+  "description": "Skeleton app for elixir/phoenix framework including many default integrations",
+  "main": "priv/static/js/app.js",
   "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
   "dependencies": {
-    "jquery": "1.*",
-    "bootstrap": "~3.3.5"
+    "bootstrap": "3.3.5"
   }
 }
