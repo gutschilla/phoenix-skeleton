@@ -20,7 +20,7 @@
   "phoenix_html": {:hex, :phoenix_html, "1.4.0"},
   "phoenix_live_reload": {:hex, :phoenix_live_reload, "0.5.0"},
   "phoenix_skeleton_deps_umbrella": {:git, "git://github.com/gutschilla/phoenix_skeleton_deps_umbrella.git", "559034b598ae382e2ea669f34b6e99078dcb6540", [branch: "master"]},
-  "plug": {:hex, :plug, "0.13.1"},
+  "plug": {:hex, :plug, "0.14.0"},
   "plug_session_memcached": {:hex, :plug_session_memcached, "0.2.6"},
   "poison": {:hex, :poison, "1.4.0"},
   "poolboy": {:hex, :poolboy, "1.5.1"},
