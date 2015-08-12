@@ -26,8 +26,7 @@ defmodule Skeleton.Mixfile do
         :cowboy, 
         :logger,
         :phoenix_ecto, 
-        :postgrex,
-        :plug_session_memcached,
+        :postgrex
       ]
     ]
   end
@@ -49,8 +48,6 @@ defmodule Skeleton.Mixfile do
       {:cowboy, "~> 1.0"},
       {:navigation_tree, ">=0.3.2"},
       {:misc_random, github: "gutschilla/elixir-helper-random", branch: "master" },
-      {:mcd, github: "EchoTeam/mcd"}, # memcached driver
-      {:plug_session_memcached, ">= 0.2.6" },
       {:exrm, ">=0.18.5"}
    ]
   end
