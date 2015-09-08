@@ -19,6 +19,7 @@ defmodule Skeleton.Web do
   def model do
     quote do
       use Ecto.Model
+      
     end
   end
 
@@ -28,7 +29,7 @@ defmodule Skeleton.Web do
 
       alias Skeleton.Repo
       import Ecto.Model
-      import Ecto.Query, only: [from: 2]
+      import Ecto.Query, only: [from: 1, from: 2]
 
       import Skeleton.Router.Helpers
     end
@@ -60,7 +61,7 @@ defmodule Skeleton.Web do
 
       alias Skeleton.Repo
       import Ecto.Model
-      import Ecto.Query, only: [from: 2]
+      import Ecto.Query, only: [from: 1, from: 2]
 
     end
   end

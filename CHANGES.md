@@ -1,11 +1,28 @@
 # CHANGES
 
+## What's new in v0.18.1?
+
+- Upgrade the whole thing to use Phoenix 1.0.2
+- Throw away bower in favour of plain npm for package management.
+- Split vendor CSS (bootstrap, currently) and JS (none, currently) into
+  different files for better caching as vendor code usually doesn't change that
+  often
+- remove phoenix-generated userrole controller. To revert this, run `mix
+  phoenix.gen.html Userrole userroles`
+
+## What's new in v0.17.0?
+
+- BUGFIX: mentioning navigation_tree in mix.exs' application section will make
+  the NavigationTree.Agent be included in a release, thus being _finally_ ready
+  for a production cycle!
+
 ## What's new in v0.16.0?
 
 - Upgrade project to support Phoenix v0.16.1
 - Temporarily drop memcached-saved sessions, using default cookie-store until I get it to work with exrm
 - Finally include a _working_ brunch config (no need for links from bower_components to web/static any more)
 - move roadmap to ROADMAP.md
+- BUG: live css reloader currently not working (not even in clean phoenix install, waiting for upstream fix)
 
 ## v0.15.5
 

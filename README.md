@@ -1,17 +1,19 @@
 # Phoenix-Sekeleton
 
-Master branch currently supports Phoenix v0.16.1
+Master branch currently supports Phoenix v1.0.2
 
 - for full changes list, see [CHANGES](./CHANGES.md)
 - for roadmap, see [ROADMAP](./ROADMAP.md)
 
-## What's new in v0.16.0?
+## What's new in v0.18.1?
 
-- Upgrade project to support Phoenix v0.16.1
-- Temporarily drop memcached-saved sessions, using default cookie-store until I get it to work with exrm
-- Finally include a _working_ brunch config (no need for links from bower_components to web/static any more)
-- move roadmap to ROADMAP.md
-- BUG: live css reloader currently not working (not even in clean phoenix install, waiting for upstream fix)
+- Upgrade the whole thing to use Phoenix 1.0.2
+- Throw away bower in favour of plain npm for package management.
+- Split vendor CSS (bootstrap, currently) and JS (none, currently) into
+  different files for better caching as vendor code usually doesn't change that
+  often
+- remove phoenix-generated userrole controller. To revert this, run `mix
+  phoenix.gen.html Userrole userroles`
 
 ## coming up next
 
@@ -22,22 +24,24 @@ Master branch currently supports Phoenix v0.16.1
 
 1. Install Elixir dependencies with `mix deps.get`
 2. Install npm dependencies for ranch with `npm install`
-    - on Debuan/Ubuntu "deb.nodesource.com" works great
+    - on Debian/Ubuntu "deb.nodesource.com" works great
+    - on a Mac, presumably you'll need to use homebrew
 3. Install bower dependecies with `bower install`
 4. Check system dependencies, run postgre dev script below
-5. Start Phoenix endpoint with `mix phoenix.server`
+5. Start Phoenix endpoint with `iex -S mix phoenix.server`
 
-Now you can visit `localhost:4000` from your browser.
+Now you can visit `127.0.0.1:4000` from your browser.
 
 # System dependencies
 
-- Erlang/Elixir, of course ;-)
+- Erlang/Elixir
+    - exrm release manager requires us to use Elixir 1.0.5
+    - tested on Erlang/OTP 18 \[erts-7.0\]
 - PostgreSQL (tests run on 9.4)
     - see config/dev.exs for host/user/port settings (CAUTION: dev host is set to 192.168.0.240, this will fail on your machine, set to locahost!)
-- npm package manager
-    - tested with 1.4.28
-- bower package manager
-    - tested with 1.4.1
+- nodejs and npm
+    - tested on node v0.12.7 and npm 2.11.3
+    - used for brunch: ran all this with brunch 1.8.5
 
 ## Create development database
 
@@ -109,4 +113,4 @@ systemctl restart phoenix_skeleton_backend.service
 
 # Feedback
 
-Is more than welcome. I am still learing this whole Elixir and Erlang/OTP thing so be rude, be harsh but be helpful.
+Is more than welcome. I am still learning this whole Elixir and Erlang/OTP thing so be rude, be harsh but be helpful.

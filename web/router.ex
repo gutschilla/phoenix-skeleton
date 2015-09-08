@@ -1,5 +1,5 @@
 defmodule Skeleton.Router do
-  use Phoenix.Router
+  use Skeleton.Web, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -22,8 +22,6 @@ defmodule Skeleton.Router do
 
     get "/",      PageController, :index
     get "/hello", PageController, :hello
-    
-    resources "/userroles", UserroleController
 
   end
 

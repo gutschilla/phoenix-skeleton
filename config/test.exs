@@ -9,10 +9,11 @@ config :skeleton, Skeleton.Endpoint,
 # Print only warnings and errors during test
 config :logger, level: :warn
 
-# Configure your database
+# Configure your database, OMG, my test run on the same database as in dev.
 config :skeleton, Skeleton.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "skeleton_test",
+  username: "skeleton_dev_user",
+  password: "skeleton_dev_pass",
+  database: "skeleton_dev",
+  hostname: "127.0.0.1",
   pool: Ecto.Adapters.SQL.Sandbox

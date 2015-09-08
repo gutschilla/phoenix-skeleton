@@ -8,6 +8,7 @@
     <meta name="author" content="gutschilla">
 
     <title>Phoenix-Skeleton</title>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/vendor.css") %>">
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
@@ -23,11 +24,9 @@
       <p class="alert alert-info"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger"><%= get_flash(@conn, :error) %></p>
       <%= @inner %>
+
     </div> <!-- /container -->
-
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>    
-    <script>require("web/static/js/app")</script>
-    
+    <script src="<%= static_path(@conn, "/js/vendor.js") %>"></script>
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
-
 </html>
