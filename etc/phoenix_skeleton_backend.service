@@ -1,6 +1,6 @@
 [Unit]
 Description=phoenix-skeleton_backend service
-After=postgresql.service memcached.service
+After=postgresql.service
 
 [Service]
 Type=forking
