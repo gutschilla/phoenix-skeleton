@@ -9,6 +9,7 @@
   often
 - remove phoenix-generated userrole controller. To revert this, run `mix
   phoenix.gen.html Userrole userroles`
+- documentation for deployment scripts (systemd service files and nginx conf)
 
 ## What's new in v0.17.0?
 

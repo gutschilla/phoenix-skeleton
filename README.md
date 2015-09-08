@@ -14,11 +14,12 @@ Master branch currently supports Phoenix v1.0.2
   often
 - remove phoenix-generated userrole controller. To revert this, run `mix
   phoenix.gen.html Userrole userroles`
+- documentation for deployment scripts (systemd service files and nginx conf)
 
 ## coming up next
 
 - move Plug.Authorization.Roles into an external dependency, make it configurable from NavigationTree
-- documentation for deployment scripts (systemd service files and nginx conf)
+- re-integrate Plug.Session.memcached as I found out why it didn't work with erxm releases
 
 # Installation
 
@@ -66,12 +67,7 @@ _Hint_: You may need to adjust de_DE.UTF-8 to your needs and use this Gist:
 
 # Deployment
 
-Hot code relaod is not covered here. Be sure to meet system dependencies.
-
-## Known deployment issues
-
-- For some reason, using this thingy with the memcached session plug does not work as a `mix release` production release. 
-  Startup with `MIX_ENV=prod mix phoenix.server` is fine, though. A workaround is to either use this method or resort to Cookie-based session storage.
+Hot code relaod is not covered here. See [https://exrm.readme.io/docs/upgradesdowngrades]
 
 ## simple (pack, copy, run)
 
@@ -79,27 +75,33 @@ Hot code relaod is not covered here. Be sure to meet system dependencies.
 - copy `rel/skeleton/releases/<version>/skeleton.tar.gz` to your production machine
 - extract, then run `bin/skeleton --start` or `bin/skeleton --console` (if you want and iex shell)
 
-## my favourite (clone, pack, run-as-service)
-This assumes a linux production machine with systemd as init system and a bash shell. Something like Debian 8 or Ubuntu 15.04 (these both are tested).
+## install as daemon on Linux
+
+This assumes a linux production machine with systemd as init system and a bash
+shell. Something like Debian 8/Jessie or Ubuntu 15.04/vivid (tested on both
+distributions). Also, this assumes
+
+- nxing 1.6+ being configured in /etc/nginx
+- postgre 9.3+
+- memcached instance listening on 127.0.0.1:11211
+
+run `apt-get install nginx memcached postgresql-9.4` on Debian/Ubtuntu have a config as above
 
 =======
 ### install
-I am used to put these things into `/var/www-apps/<project-name>`. Scripts and configs in ./etc are tuned to this.
+I am used to put these things into `/var/www-apps/<project-name>`. Scripts and
+configs in ./etc are tuned to this. As root/superuser do this:
+
 ```
+mkdir /var/www-apps
 cd /var/www-apps
 git clone https://github.com/gutschilla/phoenix-skeleton.git
 cd phoenix-skeleton
-bash etc/compile_release.sh
 npm install
-bower install
-brunch build
+mix compile
 mix ecto.migrate
-systemctl enable /var/www-apps/phoenix-skeleton/etc/phoenix_skeleton_backend.service
-systemctl start phoenix_skeleton_backend.service
-cd /etc/nginx/sites-available
-ln -s /var/www-apps/phoenix-skeleton/etc/skeleton.nginx skeleton
-cd /etc/nginx/sites-enabled
-ln -s /etc/nginx/sites-available/skeleton
+bash etc/compile_release.sh
+bash etc/install.sh
 systemctl nginx reload
 ```
 
@@ -110,6 +112,10 @@ git pull
 bash etc/compile-release.sh
 systemctl restart phoenix_skeleton_backend.service
 ```
+
+If this doesn't work (most often when you didn't increase your app's version),
+run either `mix release --implode` (be sure to set MIX_ENV=prod and PORT=4001)
+or simply delete the whole ./rel folder.
 
 # Feedback
 
