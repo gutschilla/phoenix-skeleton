@@ -14,7 +14,8 @@ use Mix.Config
 config :skeleton, Skeleton.Endpoint,
   http: [port: {:system, "PORT"}],
   url: [host: "127.0.0.1", port: 4001],
-  cache_static_manifest: "priv/static/manifest.json"
+  cache_static_manifest: "priv/static/manifest.json",
+  server: true
 
 # Do not print debug messages in production
 config :logger, level: :info

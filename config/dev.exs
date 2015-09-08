@@ -8,6 +8,7 @@ use Mix.Config
 # with brunch.io to recompile .js and .css sources.
 config :skeleton, Skeleton.Endpoint,
   http: [port: 4000],
+  url: [host: "127.0.0.1"], # point yout browser to http://127.0.0.1:4000, not http://localhost:4000 in dev mode
   debug_errors: true,
   code_reloader: true,
   cache_static_lookup: false,

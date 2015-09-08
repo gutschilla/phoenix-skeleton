@@ -3,7 +3,7 @@ defmodule Skeleton.Mixfile do
 
   def project do
     [app: :skeleton,
-     version: "0.16.0",
+     version: "0.17.1",
      elixir: "~> 1.0",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix] ++ Mix.compilers,
@@ -25,6 +25,9 @@ defmodule Skeleton.Mixfile do
         :logger,
         :phoenix_ecto, 
         :postgrex
+      ],
+      included_applications: [
+        :navigation_tree
       ]
     ]
   end
@@ -44,9 +47,9 @@ defmodule Skeleton.Mixfile do
       {:phoenix_html, "~> 2.0"},
       {:phoenix_live_reload, "~> 0.6", only: :dev},
       {:cowboy, "~> 1.0"},
-      {:navigation_tree, ">=0.3.2"},
+      {:navigation_tree, ">=0.4.4"},
       {:misc_random, github: "gutschilla/elixir-helper-random", branch: "master" },
-      {:exrm, ">=0.18.5"}
+      {:exrm, ">= 0.19.2"}
    ]
   end
 end
