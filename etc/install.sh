@@ -1,8 +1,8 @@
 #!/bin/bash
 
-PROJECT=hebaweb
+PROJECT=phoenix-skeleton
 DIR=/var/www-apps/$PROJECT
-USER=phoenix-$PROJECT
+USER=$PROJECT
 
 # create user
 useradd $USER
@@ -13,4 +13,3 @@ usermod --home $DIR/home
 # enable service
 systemctl enable $DIR/etc/$PROJECT"_backend".service
 echo use \"systemctl start $PROJECT"_backend".service\" to startup $PROJECT service
-
