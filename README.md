@@ -27,9 +27,8 @@ Master branch currently supports Phoenix v1.0.2
 2. Install npm dependencies for ranch with `npm install`
     - on Debian/Ubuntu "deb.nodesource.com" works great
     - on a Mac, presumably you'll need to use homebrew
-3. Install bower dependecies with `bower install`
-4. Check system dependencies, run postgre dev script below
-5. Start Phoenix endpoint with `iex -S mix phoenix.server`
+3. Check system dependencies, run postgre dev script below
+4. Start Phoenix endpoint with `mix phoenix.server` or  `iex -S mix phoenix.server` if you wish to have a console
 
 Now you can visit `127.0.0.1:4000` from your browser.
 
@@ -39,7 +38,7 @@ Now you can visit `127.0.0.1:4000` from your browser.
     - exrm release manager requires us to use Elixir 1.0.5
     - tested on Erlang/OTP 18 \[erts-7.0\]
 - PostgreSQL (tests run on 9.4)
-    - see config/dev.exs for host/user/port settings (CAUTION: dev host is set to 192.168.0.240, this will fail on your machine, set to locahost!)
+    - see config/dev.exs for host/user/port settings
 - nodejs and npm
     - tested on node v0.12.7 and npm 2.11.3
     - used for brunch: ran all this with brunch 1.8.5
@@ -64,6 +63,8 @@ CREATE DATABASE skeleton_dev
 ```
 _Hint_: You may need to adjust de_DE.UTF-8 to your needs and use this Gist:
 (https://gist.github.com/ffmike/877447)
+
+This only creates the database. To install all required tables (users, userroles, user_userrole_map), run `mix ecto.migrate Repo`. This will also install a simple user with zsername "admin" with password "admin" and userroles ["admin"] that you can log in with to access /ADMIN/*.
 
 # Deployment
 
@@ -115,7 +116,9 @@ systemctl restart phoenix_skeleton_backend.service
 
 If this doesn't work (most often when you didn't increase your app's version),
 run either `mix release --implode` (be sure to set MIX_ENV=prod and PORT=4001)
-or simply delete the whole ./rel folder.
+or simply delete the whole ./rel folder. 
+
+CAUTION: After deleting the ./rel folder it's currently required to run `rel/skeleton/bin/skeleon console` as privileged user as this will create neccessary directories which can't be done by an unprivileged user. TODO: Update compile-release script to create. 
 
 # Feedback
 
