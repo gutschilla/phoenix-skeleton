@@ -18,6 +18,7 @@ Master branch currently supports Phoenix v1.0.2
 
 ## coming up next
 
+- document how to use NavigationTree.Agent in a practical manner. Backport NavigationTree renderers from other projects here to provide templates for use with Zurb/Foundation side navigation bars (It's easy!)
 - move Plug.Authorization.Roles into an external dependency, make it configurable from NavigationTree
 - re-integrate Plug.Session.memcached as I found out why it didn't work with erxm releases
 
