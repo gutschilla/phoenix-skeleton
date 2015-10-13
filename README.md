@@ -1,5 +1,12 @@
 # Phoenix-Sekeleton
 
+## Description
+This is my application skeleton that integrates useful things (see [ROADMAP](./ROADMAP.md)) when starting a new project with phoenix. Starting from 100% scratch every time went tediuos so here it goes. Most changes to this project are backported from live production projects. So yes, albeit a bit quirky here and there this code runs in production.
+
+## Usage 
+After cloning this project, I do run a search/replace on the code and file names replacing "Skeleton" with "WhateverMyAppIsCalled" and "skeleton" with "whatever_my_app_is_called". 
+
+## Version
 Master branch currently supports Phoenix v1.0.2
 
 - for full changes list, see [CHANGES](./CHANGES.md)
