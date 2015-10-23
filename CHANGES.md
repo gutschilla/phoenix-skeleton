@@ -1,5 +1,16 @@
 # CHANGES
 
+## What's new in v0.18.2?
+
+"Upgrade dependencies and see if it still works":
+
+- phoenix 1.0.3
+- phoenix_html 2.2
+- phoenix_live_reload 1.0.1
+- exrm 0.19.9
+- Upgrade misc_random to use `:erlang.monotonic_time/0` instead of `:erlang.now/0`
+- Test to run on Erlang 18.1, Elixir 1.1.1, Node 4.2.1
+
 ## What's new in v0.18.1?
 
 - Upgrade the whole thing to use Phoenix 1.0.2

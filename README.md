@@ -1,27 +1,32 @@
 # Phoenix-Sekeleton
 
 ## Description
-This is my application skeleton that integrates useful things (see [ROADMAP](./ROADMAP.md)) when starting a new project with phoenix. Starting from 100% scratch every time went tediuos so here it goes. Most changes to this project are backported from live production projects. So yes, albeit a bit quirky here and there this code runs in production.
+This is my application skeleton that integrates useful things (see
+[ROADMAP](./ROADMAP.md)) when starting a new project with phoenix. Starting from
+100% scratch every time went tediuos so here it goes. Most changes to this
+project are backported from live production projects. So yes, albeit a bit
+quirky here and there this code runs in production.
 
 ## Usage 
-After cloning this project, I do run a search/replace on the code and file names replacing "Skeleton" with "WhateverMyAppIsCalled" and "skeleton" with "whatever_my_app_is_called". 
+After cloning this project, I do run a search/replace on the code and file names
+replacing "Skeleton" with "WhateverMyAppIsCalled" and "skeleton" with
+"whatever_my_app_is_called". 
 
 ## Version
-Master branch currently supports Phoenix v1.0.2
+Master branch currently supports Phoenix v1.0.3 
 
 - for full changes list, see [CHANGES](./CHANGES.md)
 - for roadmap, see [ROADMAP](./ROADMAP.md)
 
-## What's new in v0.18.1?
+## What's new in v0.18.2?
 
-- Upgrade the whole thing to use Phoenix 1.0.2
-- Throw away bower in favour of plain npm for package management.
-- Split vendor CSS (bootstrap, currently) and JS (none, currently) into
-  different files for better caching as vendor code usually doesn't change that
-  often
-- remove phoenix-generated userrole controller. To revert this, run `mix
-  phoenix.gen.html Userrole userroles`
-- documentation for deployment scripts (systemd service files and nginx conf)
+- Upgrade the whole thing to use current versions of dependencies
+ - phoenix 1.0.3
+ - phoenix_html 2.2
+ - phoenix_live_reload 1.0.1
+ - exrm 0.19.9
+- Upgrade misc_random to use `:erlang.monotonic_time/0` instead of `:erlang.now/0`
+- Test to run on Erlang 18.1 and Elixir 1.1.1
 
 ## coming up next
 
@@ -42,13 +47,15 @@ Now you can visit `127.0.0.1:4000` from your browser.
 
 # System dependencies
 
+I try to keep up with th latest releases of our dependencies, namely:
+
 - Erlang/Elixir
-    - exrm release manager requires us to use Elixir 1.0.5
-    - tested on Erlang/OTP 18 \[erts-7.0\]
+    - tested on Erlang/OTP 18.1 \[erts-7.1\] and Elixir 1.1.1
+    - still runs on Erlang 17.x and Elixir 1.0.5
 - PostgreSQL (tests run on 9.4)
     - see config/dev.exs for host/user/port settings
 - nodejs and npm
-    - tested on node v0.12.7 and npm 2.11.3
+    - tested on node v4.2.1 and npm 2.14.7
     - used for brunch: ran all this with brunch 1.8.5
 
 ## Create development database
@@ -126,8 +133,22 @@ If this doesn't work (most often when you didn't increase your app's version),
 run either `mix release --implode` (be sure to set MIX_ENV=prod and PORT=4001)
 or simply delete the whole ./rel folder. 
 
-CAUTION: After deleting the ./rel folder it's currently required to run `rel/skeleton/bin/skeleon console` as privileged user as this will create neccessary directories which can't be done by an unprivileged user. TODO: Update compile-release script to create. 
+CAUTION: After deleting the ./rel folder it's currently required to run
+`rel/skeleton/bin/skeleon console` as privileged user as this will create
+neccessary directories which can't be done by an unprivileged user. TODO: Update
+compile-release script to create. 
+
+# Glitches
+
+phoenix-skeleton depends on misc_random which compiles with a warning:
+`lib/random.ex:11: warning: erlang:now/0: Deprecated BIF"` on Erlang 18. This
+can safely be ignored as on Erlang 18 `:erlang.now/0` will not e used in favour of
+`:erlang.monotonic_time/0`
+
+At a certain point, I'll require Erlang 18 to get rid of this and always use
+`:erlang.monotonic_time/0`.
 
 # Feedback
 
-Is more than welcome. I am still learning this whole Elixir and Erlang/OTP thing so be rude, be harsh but be helpful.
+Is more than welcome. I am still learning this whole Elixir and Erlang/OTP thing
+so be rude, be harsh but be helpful.
