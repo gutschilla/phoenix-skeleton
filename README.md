@@ -20,7 +20,9 @@ Master branch currently supports Phoenix v1.0.3
 
 ## What's new in v.0.18.3?
 
-"Memcached-works-again"
+**"Memcached-works-again"**
+
+This is cool as it stores session data in the venerable memcached keeping session data out of cookies (except for the session_id). Maximum session data should now be 1MB (memcached bucket limit) with 160 Bytes of cookie header data. Yikes!
 
 - include EchoTeam/mcd dependency (TODO: switch to a hex module)
 - BUGFIX: start plug_memcached_session's app to startup memcached connection (TODO: make memcached host/port configurable)
@@ -30,7 +32,6 @@ Master branch currently supports Phoenix v1.0.3
 
 - document how to use NavigationTree.Agent in a practical manner. Backport NavigationTree renderers from other projects here to provide templates for use with Zurb/Foundation side navigation bars (It's easy!)
 - move Plug.Authorization.Roles into an external dependency, make it configurable from NavigationTree
-- re-integrate Plug.Session.memcached as I found out why it didn't work with erxm releases
 
 # Installation
 
@@ -52,6 +53,7 @@ I try to keep up with th latest releases of our dependencies, namely:
     - still runs on Erlang 17.x and Elixir 1.0.5
 - PostgreSQL (tests run on 9.4)
     - see config/dev.exs for host/user/port settings
+- memcached running on 127.0.0.1:11211
 - nodejs and npm
     - tested on node v4.2.1 and npm 2.14.7
     - used for brunch: ran all this with brunch 1.8.5
