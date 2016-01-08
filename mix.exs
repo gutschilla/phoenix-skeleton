@@ -24,10 +24,11 @@ defmodule Skeleton.Mixfile do
         :cowboy, 
         :logger,
         :phoenix_ecto, 
-        :postgrex
+        :postgrex,
+        :plug_session_memcached
       ],
       included_applications: [
-        :navigation_tree
+        :navigation_tree,
       ]
     ]
   end
@@ -48,6 +49,8 @@ defmodule Skeleton.Mixfile do
       {:phoenix_live_reload, "~> 1.0.1", only: :dev},
       {:cowboy, "~> 1.0"},
       {:navigation_tree, ">=0.4.4"},
+      {:plug_session_memcached, ">=0.2.7"},
+      {:mcd, github: "EchoTeam/mcd"},
       {:misc_random, github: "gutschilla/elixir-helper-random", tag: "0.2.3" },
       {:exrm, ">= 0.19.9"}
     ]

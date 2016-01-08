@@ -39,5 +39,5 @@ config :skeleton, Skeleton.Repo,
   username: "skeleton_dev_user",
   password: "skeleton_dev_pass",
   database: "skeleton_dev",
-  hostname: "127.0.0.1",
+  hostname: "192.168.0.240",
   pool_size: 10 # The amount of database connections in the pool

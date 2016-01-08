@@ -18,15 +18,13 @@ Master branch currently supports Phoenix v1.0.3
 - for full changes list, see [CHANGES](./CHANGES.md)
 - for roadmap, see [ROADMAP](./ROADMAP.md)
 
-## What's new in v0.18.2?
+## What's new in v.0.18.3?
 
-- Upgrade the whole thing to use current versions of dependencies
- - phoenix 1.0.3
- - phoenix_html 2.2
- - phoenix_live_reload 1.0.1
- - exrm 0.19.9
-- Upgrade misc_random to use `:erlang.monotonic_time/0` instead of `:erlang.now/0`
-- Test to run on Erlang 18.1 and Elixir 1.1.1
+"Memcached-works-again"
+
+- include EchoTeam/mcd dependency (TODO: switch to a hex module)
+- BUGFIX: start plug_memcached_session's app to startup memcached connection (TODO: make memcached host/port configurable)
+- enable memcached as Session.Storage module
 
 ## coming up next
 

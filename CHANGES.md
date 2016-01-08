@@ -1,5 +1,13 @@
 # CHANGES
 
+## What's new in v.0.18.3?
+
+"Memcached-works-again"
+
+- include EchoTeam/mcd dependency (TODO: switch to a hex module)
+- BUGFIX: start plug_memcached_session's app to startup memcached connection (TODO: make memcached host/port configurable)
+- enable memcached as Session.Storage module
+
 ## What's new in v0.18.2?
 
 "Upgrade dependencies and see if it still works":
