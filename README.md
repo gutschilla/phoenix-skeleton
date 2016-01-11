@@ -41,12 +41,10 @@ Master branch currently supports Phoenix v1.1.2
 
 This assumes a Debian/Ubuntu environment. Max OSX should be similar, except that packages are installed with homebrew instead of apt-get.
 
-0. Install System dependencies
-
+0. Install System dependencies (see section _System dependencies_)
 1. Install Elixir dependencies with `mix deps.get`
-
 2. Install npm dependencies for ranch with `npm install`
-
+    1. You might want to run `brunch builld` to check if js/css compiling and concatenation works
 3. create database with postgre script below
     - run as postgres superuser: `sudo -u postgres psql postgres`
     ```
@@ -65,11 +63,8 @@ This assumes a Debian/Ubuntu environment. Max OSX should be similar, except that
     ```
     This will create a database `skeleton_dev` that is accessible by `skeleton_dev_user` using password `skeleton_dev_pass`. You should tune this to your needs, of course.
     _Hint_: You may need to adjust de_DE.UTF-8 to en_US.UTF-8 for US-english Collation using this Gist: (https://gist.github.com/ffmike/877447)
-
 4. run `mix.compile` to see if everything builds fine
-
 5. run `mix ecto.migrate Repo` to create required database tables
-
 6. Start Phoenix endpoint with `mix phoenix.server` or  `iex -S mix phoenix.server` if you wish to have a console
 
 **Now you can visit `127.0.0.1:4000` from your browser.**
