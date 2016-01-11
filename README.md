@@ -41,14 +41,11 @@ Master branch currently supports Phoenix v1.1.2
 
 This assumes a Debian/Ubuntu environment. Max OSX should be similar, except that packages are installed with homebrew instead of apt-get.
 
-0. Install System dependencies (I assume Elixir is running already)
-    - `sudo apt-get install memcached build-essential postgresql postgresql-contrib`
+0. Install System dependencies
 
 1. Install Elixir dependencies with `mix deps.get`
 
 2. Install npm dependencies for ranch with `npm install`
-    - on Debian/Ubuntu "deb.nodesource.com" works great
-    - on a Mac, presumably you'll need to use homebrew
 
 3. create database with postgre script below
     - run as postgres superuser: `sudo -u postgres psql postgres`
@@ -90,10 +87,18 @@ I try to keep up with th latest releases of our dependencies, namely:
 
 - Erlang/Elixir
     - tested on Erlang/OTP 18.2 \[erts-7.2\] and Elixir 1.2.0
+    - On Debian/Ubuntu I use Linuxbrew to keep up-to-date, see: [brew.sh/linuxbrew](http://brew.sh/linuxbrew/)
+    - On a Mac you probably know [Homebrew](http://brew.sh)
+    - `brew update && brew install elixir` Should install both Elixir and Erlang.
+    - On poduction servers I prefer [debian packages obtained from Erlang Solutions](https://www.erlang-solutions.com/resources/download.html) 
 - PostgreSQL (tests run on 9.4)
     - see config/dev.exs for host/user/port settings
+    - `sudo apt-get install postgresql postgresql-contrib postgresql-server-dev-all` works fine on Debian/Ubuntu
 - memcached running on 127.0.0.1:11211
+    - `apt-get install memcached` works fine on Debina/Ubuntu
 - nodejs and npm
+    - on Debian/Ubuntu "deb.nodesource.com" works great, or just download nodejs from [nodejs.org](https://nodejs.org/en/download/)
+    - on a Mac, presumably you'll need to use homebrew
     - tested on node v5.4.0 and npm 3.3.12
     - used for brunch: ran all this with brunch 2.1.3
 
