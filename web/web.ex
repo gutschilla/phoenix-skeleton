@@ -18,8 +18,11 @@ defmodule Skeleton.Web do
 
   def model do
     quote do
-      use Ecto.Model
-      
+      use Ecto.Schema
+
+      import Ecto
+      import Ecto.Changeset
+      import Ecto.Query, only: [from: 1, from: 2]
     end
   end
 
@@ -28,10 +31,11 @@ defmodule Skeleton.Web do
       use Phoenix.Controller
 
       alias Skeleton.Repo
-      import Ecto.Model
+      import Ecto
       import Ecto.Query, only: [from: 1, from: 2]
 
       import Skeleton.Router.Helpers
+      import Skeleton.Gettext
     end
   end
 
@@ -46,6 +50,8 @@ defmodule Skeleton.Web do
       use Phoenix.HTML
 
       import Skeleton.Router.Helpers
+      import Skeleton.ErrorHelpers
+      import Skeleton.Gettext
     end
   end
 
@@ -60,9 +66,9 @@ defmodule Skeleton.Web do
       use Phoenix.Channel
 
       alias Skeleton.Repo
-      import Ecto.Model
+      import Ecto
       import Ecto.Query, only: [from: 1, from: 2]
-
+      import Skeleton.Gettext
     end
   end
 

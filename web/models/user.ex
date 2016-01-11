@@ -12,6 +12,9 @@ defmodule Skeleton.User do
     
   end
 
+  @required_fields ~w(username)
+  @optional_fields ~w()
+  
   @doc """
   Creates a changeset based on the `model` and `params`.
 

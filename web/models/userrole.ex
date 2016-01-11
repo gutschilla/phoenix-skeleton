@@ -6,6 +6,9 @@ defmodule Skeleton.Userrole do
     has_many  :user_userrole_maps, Skeleton.UserUserroleMap
   end
 
+  @required_fields ~w(name)
+  @optional_fields ~w()
+  
   @doc """
   Creates a changeset based on the `model` and `params`.
 

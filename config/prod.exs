@@ -14,8 +14,7 @@ use Mix.Config
 config :skeleton, Skeleton.Endpoint,
   http: [port: {:system, "PORT"}],
   url: [host: "example.com", port: 80],
-  cache_static_manifest: "priv/static/manifest.json",
-  server: true
+  cache_static_manifest: "priv/static/manifest.json"
 
 # Do not print debug messages in production
 config :logger, level: :info
@@ -56,6 +55,10 @@ config :logger, level: :info
 #
 #     config :skeleton, Skeleton.Endpoint, server: true
 #
+# You will also need to set the application root to `.` in order
+# for the new static assets to be served after a hot upgrade:
+#
+#     config :skeleton, Skeleton.Endpoint, root: "."
 
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.

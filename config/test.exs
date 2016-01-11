@@ -9,7 +9,7 @@ config :skeleton, Skeleton.Endpoint,
 # Print only warnings and errors during test
 config :logger, level: :warn
 
-# Configure your database, OMG, my test run on the same database as in dev.
+# Configure your database
 config :skeleton, Skeleton.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "skeleton_dev_user",

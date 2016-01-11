@@ -10,7 +10,7 @@ defmodule Skeleton do
       # Start the endpoint when the application starts
       supervisor(Skeleton.Endpoint, []),
       # Start the Ecto repository
-      worker(Skeleton.Repo, []),
+      supervisor(Skeleton.Repo, []),
       # Here you could define other workers and supervisors as children
       # worker(Skeleton.Worker, [arg1, arg2, arg3]),
       worker( NavigationTree.Agent, [Skeleton.Navigation.config ] )

@@ -1,5 +1,7 @@
 # Phoenix-Sekeleton
 
+My skeleton to bootstrap a new Phoenix app.
+
 ## Description
 This is my application skeleton that integrates useful things (see
 [ROADMAP](./ROADMAP.md)) when starting a new project with phoenix. Starting from
@@ -13,20 +15,22 @@ replacing "Skeleton" with "WhateverMyAppIsCalled" and "skeleton" with
 "whatever_my_app_is_called". 
 
 ## Version
-Master branch currently supports Phoenix v1.0.3 
+Master branch currently supports Phoenix v1.1.2 
 
 - for full changes list, see [CHANGES](./CHANGES.md)
 - for roadmap, see [ROADMAP](./ROADMAP.md)
 
-## What's new in v.0.18.3?
+## What's new in v.0.19.0?
 
-**"Memcached-works-again"**
+"Upgrades upgrades upgrades!"
 
-This is cool as it stores session data in the venerable memcached keeping session data out of cookies (except for the session_id). Maximum session data should now be 1MB (memcached bucket limit) with 160 Bytes of cookie header data. Yikes!
-
-- include EchoTeam/mcd dependency (TODO: switch to a hex module)
-- BUGFIX: start plug_memcached_session's app to startup memcached connection (TODO: make memcached host/port configurable)
-- enable memcached as Session.Storage module
+- Tune everything to run on/with
+    - Elixir 1.2.0
+    - Erlang 18.2
+    - Phoenix 1.1.2
+    - node 5.4
+- Use my (gutschilla) packages from hex.pm rather than rely on github
+- I hope the _Installation_ section in README is more readable, now
 
 ## coming up next
 
@@ -35,51 +39,63 @@ This is cool as it stores session data in the venerable memcached keeping sessio
 
 # Installation
 
+This assumes a Debian/Ubuntu environment. Max OSX should be similar, except that packages are installed with homebrew instead of apt-get.
+
+0. Install System dependencies (I assume Elixir is running already)
+    - `sudo apt-get install memcached build-essential postgresql postgresql-contrib`
+
 1. Install Elixir dependencies with `mix deps.get`
+
 2. Install npm dependencies for ranch with `npm install`
     - on Debian/Ubuntu "deb.nodesource.com" works great
     - on a Mac, presumably you'll need to use homebrew
-3. Check system dependencies, run postgre dev script below
-4. Start Phoenix endpoint with `mix phoenix.server` or  `iex -S mix phoenix.server` if you wish to have a console
 
-Now you can visit `127.0.0.1:4000` from your browser.
+3. create database with postgre script below
+    - run as postgres superuser: `sudo -u postgres psql postgres`
+    ```
+    CREATE ROLE skeleton_dev_user LOGIN
+      ENCRYPTED PASSWORD 'md5465fc2608ab7a4ebe4eaa198e63b85a7'
+      NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION;
+    CREATE DATABASE skeleton_dev
+      WITH OWNER = skeleton_dev_user
+           ENCODING = 'UTF8'
+           TABLESPACE = pg_default
+           LC_COLLATE = 'de_DE.UTF-8'
+           LC_CTYPE = 'de_DE.UTF-8'
+           CONNECTION LIMIT = -1
+           TEMPLATE = template0
+          ;
+    ```
+    This will create a database `skeleton_dev` that is accessible by `skeleton_dev_user` using password `skeleton_dev_pass`. You should tune this to your needs, of course.
+    _Hint_: You may need to adjust de_DE.UTF-8 to en_US.UTF-8 for US-english Collation using this Gist: (https://gist.github.com/ffmike/877447)
+
+4. run `mix.compile` to see if everything builds fine
+
+5. run `mix ecto.migrate Repo` to create required database tables
+
+6. Start Phoenix endpoint with `mix phoenix.server` or  `iex -S mix phoenix.server` if you wish to have a console
+
+**Now you can visit `127.0.0.1:4000` from your browser.**
+
+## Create development database
+
+This will create a database "skeleton_dev" owned by "skeleton_dev_user" with password "skeleton_dev_pass". Tune this to yout needs.
+
+
+This only creates the database. To install all required tables (users, userroles, user_userrole_map), run `mix ecto.migrate Repo`. This will also install a simple user with zsername "admin" with password "admin" and userroles ["admin"] that you can log in with to access /ADMIN/*.
 
 # System dependencies
 
 I try to keep up with th latest releases of our dependencies, namely:
 
 - Erlang/Elixir
-    - tested on Erlang/OTP 18.1 \[erts-7.1\] and Elixir 1.1.1
-    - still runs on Erlang 17.x and Elixir 1.0.5
+    - tested on Erlang/OTP 18.2 \[erts-7.2\] and Elixir 1.2.0
 - PostgreSQL (tests run on 9.4)
     - see config/dev.exs for host/user/port settings
 - memcached running on 127.0.0.1:11211
 - nodejs and npm
-    - tested on node v4.2.1 and npm 2.14.7
-    - used for brunch: ran all this with brunch 1.8.5
-
-## Create development database
-
-This will create a database "skeleton_dev" owned by "skeleton_dev_user" with password "skeleton_dev_pass". Tune this to yout needs.
-
-```
-CREATE ROLE skeleton_dev_user LOGIN
-  ENCRYPTED PASSWORD 'md5465fc2608ab7a4ebe4eaa198e63b85a7'
-  NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION;
-CREATE DATABASE skeleton_dev
-  WITH OWNER = skeleton_dev_user
-       ENCODING = 'UTF8'
-       TABLESPACE = pg_default
-       LC_COLLATE = 'de_DE.UTF-8'
-       LC_CTYPE = 'de_DE.UTF-8'
-       CONNECTION LIMIT = -1
-       TEMPLATE = template0
-      ;
-```
-_Hint_: You may need to adjust de_DE.UTF-8 to your needs and use this Gist:
-(https://gist.github.com/ffmike/877447)
-
-This only creates the database. To install all required tables (users, userroles, user_userrole_map), run `mix ecto.migrate Repo`. This will also install a simple user with zsername "admin" with password "admin" and userroles ["admin"] that you can log in with to access /ADMIN/*.
+    - tested on node v5.4.0 and npm 3.3.12
+    - used for brunch: ran all this with brunch 2.1.3
 
 # Deployment
 

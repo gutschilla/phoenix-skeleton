@@ -11,7 +11,6 @@ config :skeleton, Skeleton.Endpoint,
   url: [host: "127.0.0.1"], # point yout browser to http://127.0.0.1:4000, not http://localhost:4000 in dev mode
   debug_errors: true,
   code_reloader: true,
-  cache_static_lookup: false,
   check_origin: false,
   watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin"]]
 
@@ -20,6 +19,7 @@ config :skeleton, Skeleton.Endpoint,
   live_reload: [
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
+      ~r{priv/gettext/.*(po)$},
       ~r{web/views/.*(ex)$},
       ~r{web/templates/.*(eex)$}
     ]
@@ -39,5 +39,5 @@ config :skeleton, Skeleton.Repo,
   username: "skeleton_dev_user",
   password: "skeleton_dev_pass",
   database: "skeleton_dev",
-  hostname: "192.168.0.240",
-  pool_size: 10 # The amount of database connections in the pool
+  hostname: "127.0.0.1",
+  pool_size: 10

@@ -10,5 +10,5 @@ defmodule Skeleton.PageController do
     conn  = put_session(conn, :count, count + 1 )
     text conn, "Hello #{count}"
   end
-  
+
 end

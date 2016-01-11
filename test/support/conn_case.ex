@@ -21,8 +21,9 @@ defmodule Skeleton.ConnCase do
       use Phoenix.ConnTest
 
       alias Skeleton.Repo
-      import Ecto.Model
-      import Ecto.Query, only: [from: 2]
+      import Ecto
+      import Ecto.Changeset
+      import Ecto.Query, only: [from: 1, from: 2]
 
       import Skeleton.Router.Helpers
 
@@ -36,6 +37,6 @@ defmodule Skeleton.ConnCase do
       Ecto.Adapters.SQL.restart_test_transaction(Skeleton.Repo, [])
     end
 
-    :ok
+    {:ok, conn: Phoenix.ConnTest.conn()}
   end
 end

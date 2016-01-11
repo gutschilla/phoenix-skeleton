@@ -12,11 +12,11 @@ defmodule Skeleton.Router do
   pipeline :api do
     plug :accepts, ["json"]
   end
-
+  
   pipeline :admin do
     plug Plug.Authorization.Roles, %Skeleton.Authorization{ required: ["admin"] }
   end
-
+  
   scope "/", Skeleton do
     pipe_through :browser # Use the default browser stack
 
