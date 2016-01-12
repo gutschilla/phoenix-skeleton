@@ -3,7 +3,7 @@ defmodule Skeleton.Mixfile do
 
   def project do
     [app: :skeleton,
-     version: "0.19.0",
+     version: "0.19.1",
      elixir: "~> 1.0",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
@@ -53,7 +53,7 @@ defmodule Skeleton.Mixfile do
       {:gettext, "~> 0.9"},
       {:cowboy, "~> 1.0"},
       {:navigation_tree, ">=0.4.4"},
-      {:plug_session_memcached, ">=0.2.7"},
+      {:plug_session_memcached, ">=0.3.1"},
       {:mcd, github: "EchoTeam/mcd"},
       {:misc_random, ">=0.2.5" },
       {:exrm, ">= 1.0.0-rc7"}

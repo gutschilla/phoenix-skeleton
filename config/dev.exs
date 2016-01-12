@@ -41,3 +41,6 @@ config :skeleton, Skeleton.Repo,
   database: "skeleton_dev",
   hostname: "127.0.0.1",
   pool_size: 10
+
+config :plug_session_memcached,
+  server: [ '127.0.0.1', 11211 ]

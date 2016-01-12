@@ -10,7 +10,7 @@
     - [x] Means to check for roles in controllers/actions
 - [x] Memcached Session store
     - this is done via the plug gutschilla/plug-session-memcached
-    - [ ] make Memcached host/port configurable
+    - [x] make Memcached host/port configurable
 - [x] Django Templates (erlyDTL) => removed, see 0.7. now using eex (running with the crowd)
 - [x] Ecto models
 - [x] call/process external programs via porcelain (mainly for PDF generation)
@@ -18,7 +18,7 @@
 - [x] pluggable Navigation tree
     - [x] navigation tree that depends on user roles
         - this is done via the gutschilla/phoenix_skeleton_deps_umbrella dependecy which includes then NavigationTree module
-- [ ] CouchDB connector
+- [x] CouchDB connector, see [couchdb_client](https://github.com/gutschilla/elixir-couchdb-client)
 - [ ] Hello2.Admin.RESTCrud controller
     - [ ] validate/save
     - [ ] uploads ()

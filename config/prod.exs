@@ -19,6 +19,9 @@ config :skeleton, Skeleton.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :plug_session_memcached,
+  server: [ '127.0.0.1', 11211 ]
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key

@@ -91,6 +91,7 @@ I try to keep up with th latest releases of our dependencies, namely:
     - `sudo apt-get install postgresql postgresql-contrib postgresql-server-dev-all` works fine on Debian/Ubuntu
 - memcached running on 127.0.0.1:11211
     - `apt-get install memcached` works fine on Debina/Ubuntu
+    - if you have memcached running on another host/port, adjust settings in `conf/dev.exs conf/prod.exs`  
 - nodejs and npm
     - on Debian/Ubuntu "deb.nodesource.com" works great, or just download nodejs from [nodejs.org](https://nodejs.org/en/download/)
     - on a Mac, presumably you'll need to use homebrew
