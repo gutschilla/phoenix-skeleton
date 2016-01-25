@@ -3,7 +3,7 @@ defmodule Skeleton.Mixfile do
 
   def project do
     [app: :skeleton,
-     version: "0.19.1",
+     version: "0.19.2",
      elixir: "~> 1.0",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
@@ -21,17 +21,19 @@ defmodule Skeleton.Mixfile do
       mod: {Skeleton, []},
       applications: [
         :phoenix,
-        :phoenix_html,
         :cowboy,
         :logger,
         :gettext,
-        :phoenix_ecto,
         :postgrex,
-        :plug_session_memcached
+        :phoenix_ecto,
+        :phoenix_html,
+        :lager,
+        :corman,
+        :misc_random,
       ],
       included_applications: [
         :navigation_tree,
-        :plug_session_memcached
+        :plug_session_memcached,
       ]
     ]
   end

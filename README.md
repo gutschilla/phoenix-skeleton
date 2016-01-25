@@ -22,15 +22,9 @@ Master branch currently supports Phoenix v1.1.2
 
 ## What's new in v.0.19.0?
 
-"Upgrades upgrades upgrades!"
+"prod releasing"
 
-- Tune everything to run on/with
-    - Elixir 1.2.0
-    - Erlang 18.2
-    - Phoenix 1.1.2
-    - node 5.4
-- Use my (gutschilla) packages from hex.pm rather than rely on github
-- I hope the _Installation_ section in README is more readable, now
+- tuned `mix.ex`s and `config/prod.exs` in a way that exrm can create a working release (thanks to *hykw* for reporting on this)
 
 ## coming up next
 

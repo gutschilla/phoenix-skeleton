@@ -1,7 +1,7 @@
 defprotocol Plug.Authorization.Roles.Config do
   @vsn 1
 
-  @moduledic """
+  @moduledoc """
   Defines configuratuin for Plug.Authorization.Roles. 
 
   - Implement functions `required` to configure ways to 

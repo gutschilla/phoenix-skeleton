@@ -1,5 +1,23 @@
 # CHANGES
 
+## What's new in v.0.19.0?
+
+"prod releasing"
+
+- tuned `mix.ex`s and `config/prod.exs` in a way that exrm can create a working release (thanks to *hykw* for reporting on this)
+
+## What's new in v.0.19.0?
+
+"Upgrades upgrades upgrades!"
+
+- Tune everything to run on/with
+    - Elixir 1.2.0
+    - Erlang 18.2
+    - Phoenix 1.1.2
+    - node 5.4
+- Use my (gutschilla) packages from hex.pm rather than rely on github
+- I hope the _Installation_ section in README is more readable, now
+
 ## What's new in v.0.18.3?
 
 "Memcached-works-again"
