@@ -1,3 +1,7 @@
+# Deprecation-Warning
+
+This is pretty old as it refers to a 3-year old version of Phoenix. If I'll do monolithic web apps in Elixir again, I'll post my results here.
+
 # Phoenix-Sekeleton
 
 My skeleton to bootstrap a new Phoenix app.
