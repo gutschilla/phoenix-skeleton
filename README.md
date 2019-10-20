@@ -43,7 +43,7 @@ This assumes a Debian/Ubuntu environment. Max OSX should be similar, except that
 0. Install System dependencies (see section _System dependencies_)
 1. Install Elixir dependencies with `mix deps.get`
 2. Install npm dependencies for ranch with `npm install`
-    1. You might want to run `brunch builld` to check if js/css compiling and concatenation works
+    1. You might want to run `brunch build` to check if js/css compiling and concatenation works. If you have not installed brunch, then run `npm install -g brunch`
 3. create database with postgre script below
     - run as postgres superuser: `sudo -u postgres psql postgres`
     ```
